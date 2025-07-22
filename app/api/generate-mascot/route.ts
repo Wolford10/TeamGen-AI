@@ -70,7 +70,7 @@ IMPORTANT: Keep the description short and punchy - maximum 150 characters. Make 
       const cleanedRaw = raw.replace(/```json\s*/, '').replace(/\s*```/, '').trim()
       const result = JSON.parse(cleanedRaw)
       return NextResponse.json(result)
-    } catch (parseError) {
+    } catch {
       console.error('Failed to parse OpenAI response as JSON:', raw)
       return NextResponse.json(
         { error: 'Invalid response format from AI' },
