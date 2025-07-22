@@ -43,7 +43,7 @@ function PaywallModal({ show, onClose }: { show: boolean, onClose: () => void })
           ×
         </button>
         <div className="text-4xl mb-2">🛑 Hold up, Coach!</div>
-        <div className="text-lg font-bold mb-4 text-gray-800">You've hit your 5 free team drafts.</div>
+        <div className="text-lg font-bold mb-4 text-gray-800">You&apos;ve hit your 5 free team drafts.</div>
         <div className="mb-4 text-gray-700">
           Ready to build more dream squads, generate custom mascot art, and unlock limitless creativity?
         </div>
@@ -87,7 +87,6 @@ export default function PromptForm() {
   const [input, setInput] = useState('')
   const [teamNames, setTeamNames] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
-  const [selectedName, setSelectedName] = useState<string | null>(null)
   const [isTyping, setIsTyping] = useState(false)
   const [pendingAnswer, setPendingAnswer] = useState<string | null>(null)
   const [editingKey, setEditingKey] = useState<string | null>(null)
@@ -185,7 +184,6 @@ export default function PromptForm() {
       }
     }
     setLoading(true)
-    setSelectedName(null)
     const res = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -378,7 +376,7 @@ export default function PromptForm() {
             </button>
             {genBlocked && !userHasPaid && (
               <div className="mt-4 text-center text-red-400 font-semibold">
-                You have reached your 5 free team name generations.<br />
+                You&apos;ve reached your 5 free team name generations.<br />
                 <button
                   className="underline text-blue-400 hover:text-blue-600 mt-2"
                   onClick={() => setShowPaywall(true)}
@@ -389,7 +387,7 @@ export default function PromptForm() {
             )}
             {userHasPaid && paidCapReached && (
               <div className="mt-4 text-center text-yellow-500 font-semibold">
-                You've hit today's limit. Come back tomorrow for more team-building action!
+                You&apos;ve hit today&apos;s limit. Come back tomorrow for more team-building action!
               </div>
             )}
           </>
