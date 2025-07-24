@@ -81,7 +81,7 @@ function PaywallModal({ show, onClose }: { show: boolean, onClose: () => void })
           ×
         </button>
         <div className="text-4xl mb-2">🛑 Hold up, Coach!</div>
-        <div className="text-lg font-bold mb-4 text-gray-800">You've hit your free image limit.</div>
+        <div className="text-lg font-bold mb-4 text-gray-800">You&apos;ve hit your free image limit.</div>
         <div className="mb-4 text-gray-700">
           Ready to build more dream squads, generate custom mascot art, and unlock limitless creativity?
         </div>
@@ -115,7 +115,7 @@ const TeamPage = ({ params }: TeamPageProps) => {
   const [loading, setLoading] = useState(true);
   const [userHasPaid, setUserHasPaid] = useState(false);
   const [imageGenCount, setImageGenCount] = useState(0);
-  const [imageGenDate, setImageGenDate] = useState('');
+
   const [imageBlocked, setImageBlocked] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
   const [paidImageCapReached, setPaidImageCapReached] = useState(false);
@@ -163,7 +163,7 @@ const TeamPage = ({ params }: TeamPageProps) => {
           localStorage.setItem('paidImageGenDate', today);
           localStorage.setItem('paidImageGenCount', '0');
         }
-        setImageGenDate(today);
+
         setImageGenCount(paidCount);
         if (paidCount >= 25) {
           setPaidImageCapReached(true);
@@ -371,7 +371,7 @@ const TeamPage = ({ params }: TeamPageProps) => {
       )}
       {userHasPaid && paidImageCapReached && (
         <div className="mt-4 text-center text-yellow-500 font-semibold">
-          You've hit today's limit. Come back tomorrow for more team-building action!
+          You&apos;ve hit today&apos;s limit. Come back tomorrow for more team-building action!
         </div>
       )}
       <PaywallModal show={showPaywall && imageBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
