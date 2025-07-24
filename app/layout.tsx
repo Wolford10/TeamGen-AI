@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Team Name Generator - Create Fun Sports Team Names",
-  description: "Generate hilarious and creative team names for any sport. Get custom mascots and logos too! Perfect for sports teams, leagues, and tournaments.",
+  title: "Team Name Generator - Create Fun Sports & Fantasy Team Names",
+  description: "Generate hilarious and creative team names for any sport, fantasy football, fantasy basketball, and fantasy leagues. Get custom mascots and logos too! Perfect for sports teams, fantasy leagues, tournaments, and competitive gaming.",
 };
 
 export default function RootLayout({
