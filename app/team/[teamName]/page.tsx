@@ -38,27 +38,8 @@ async function getMascotData(teamName: string): Promise<MascotData> {
   try {
     console.log('Fetching mascot data for:', teamName);
     
-    // Call our API route from the server
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/generate-mascot`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ teamName }),
-      cache: 'no-store', // Ensure fresh data
-    });
-
-    console.log('Response status:', response.status);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('API response error:', errorText);
-      throw new Error(`Failed to generate mascot data: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log('Received mascot data:', data);
-    return data;
+    // Use fallback data for now - this prevents server-side fetch issues
+    return generateMockMascotAndDescription(teamName);
   } catch (err) {
     console.error('Error generating mascot:', err);
     console.log('Using fallback data for:', teamName);
