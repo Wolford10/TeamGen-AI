@@ -69,6 +69,25 @@ async function getMascotData(teamName: string): Promise<MascotData> {
 
 // PaywallModal component (reuse from PromptForm)
 function PaywallModal({ show, onClose }: { show: boolean, onClose: () => void }) {
+  const [loading, setLoading] = useState(false);
+  
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/create-checkout-session', { method: 'POST' });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Failed to start checkout. Please try again.');
+        setLoading(false);
+      }
+    } catch (err) {
+      alert('Error connecting to payment service.');
+      setLoading(false);
+    }
+  };
+
   if (!show) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
@@ -93,12 +112,13 @@ function PaywallModal({ show, onClose }: { show: boolean, onClose: () => void })
             <li>✅ No account needed — instant access</li>
           </ul>
         </div>
-        <a
-          href="#stripe-link-placeholder"
-          className="inline-block w-full py-3 rounded-full bg-purple-600 text-white font-bold text-lg mb-2 hover:bg-purple-700 transition"
+        <button
+          onClick={handleCheckout}
+          disabled={loading}
+          className={`inline-block w-full py-3 rounded-full bg-purple-600 text-white font-bold text-lg mb-2 hover:bg-purple-700 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          Unlock Now
-        </a>
+          {loading ? 'Redirecting…' : 'Unlock Now'}
+        </button>
         <div className="text-xs text-gray-500">One-time payment. Instant access. No recurring fees.</div>
       </div>
     </div>
