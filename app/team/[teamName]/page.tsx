@@ -151,7 +151,7 @@ const TeamPage = ({ params }: TeamPageProps) => {
       setImageGenCount(count);
       if (localStorage.getItem('userHasPaid') !== 'true' && count >= 1) {
         setImageBlocked(true);
-        setShowPaywall(true);
+        // Don't automatically show paywall - only show when user tries to generate
       }
       // Paid user: 25 images per day
       if (localStorage.getItem('userHasPaid') === 'true') {
@@ -203,7 +203,10 @@ const TeamPage = ({ params }: TeamPageProps) => {
 
   const generateImage = async () => {
     if (!mascotData) return;
-    if (imageBlocked || paidImageCapReached) return;
+    if (imageBlocked || paidImageCapReached) {
+      setShowPaywall(true);
+      return;
+    }
     setImageLoading(true);
     try {
       const mascotPrompt = `Cartoon-style ${mascotData.mascotAnimal} mascot named ${mascotData.mascotName} wearing a ${teamName} jersey, ${mascotData.mascotPersonality}`;
@@ -245,7 +248,10 @@ const TeamPage = ({ params }: TeamPageProps) => {
 
   const generateLogo = async () => {
     if (!mascotData) return;
-    if (imageBlocked || paidImageCapReached) return;
+    if (imageBlocked || paidImageCapReached) {
+      setShowPaywall(true);
+      return;
+    }
     setLogoLoading(true);
     try {
       const response = await fetch('/api/generate-logo', {
