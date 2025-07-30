@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
 
     const {
       sport,
+      style,
       location,
       cleanOrDirty,
       extra,
@@ -20,6 +21,7 @@ export async function POST(req: NextRequest) {
 
     // Base prompt intro depending on clean/dirty
     const isDirty = cleanOrDirty === 'dirty'
+    const isFantasy = style === 'fantasy'
 
     const cleanExamples = `
 Here are examples of great family-friendly team names:
@@ -59,12 +61,14 @@ These names are: wildly inappropriate, adult-themed, and extremely funny.`
 
     const promptIntro = isDirty
       ? `Generate 5 hilarious, edgy, and R-rated sports team names for a ${sport} team. These names must be wildly inappropriate, adult-themed, and extremely funny. In dirty mode, edgy adult humor is allowed, but disallowed content includes explicit slurs, racial slurs, hate speech, under-18 references, or illegal content.`
-      : `Generate 5 creative and family-appropriate sports team names for a ${sport} team. Keep them fun, original, and suitable for all ages.`
+      : isFantasy
+      ? `Generate 5 creative and fantasy-themed sports team names for a ${sport} team. These names should be imaginative, epic, and suitable for fantasy leagues or creative teams.`
+      : `Generate 5 creative and realistic sports team names for a ${sport} team. These names should be professional, authentic, and suitable for real sports teams or competitive leagues.`
 
     const examples = isDirty ? dirtyExamples : cleanExamples
 
     const fewShotExample = `
-Example Input: sport: "basketball", location: "Seattle", style: "clean", level: "adult", extra: "coffee"
+Example Input: sport: "basketball", location: "Seattle", style: "fantasy", appropriateness: "clean", level: "adult", extra: "coffee"
 Example Output:
 Seattle Slam Dunkers
 Emerald City Ballers
@@ -84,7 +88,8 @@ ${fewShotExample}
 
 Details:
 - Sport: ${sport}
-- Style (clean or dirty): ${cleanOrDirty}
+- Style: ${style} (fantasy/real)
+- Appropriateness: ${cleanOrDirty} (clean/dirty)
 - Location or color: ${location}
 - Level: ${level || 'any'}
 - Extra keywords or themes: ${extra}

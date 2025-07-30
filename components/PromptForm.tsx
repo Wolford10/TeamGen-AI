@@ -204,17 +204,17 @@ export default function PromptForm() {
         <div className="flex gap-4">
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${input === 'funny' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
-            onClick={() => setInput('funny')}
+            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${input === 'fantasy' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+            onClick={() => setInput('fantasy')}
           >
-            Funny
+            Fantasy
           </button>
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${input === 'professional' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
-            onClick={() => setInput('professional')}
+            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${input === 'real' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
+            onClick={() => setInput('real')}
           >
-            Professional
+            Real
           </button>
         </div>
       )
@@ -428,17 +428,17 @@ function EditAnswerForm({ qKey, initialValue, onSave, onCancel }: { qKey: string
       <div className="flex gap-4">
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${val === 'funny' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
-          onClick={() => setVal('funny')}
+          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${val === 'fantasy' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+          onClick={() => setVal('fantasy')}
         >
-          Funny
+          Fantasy
         </button>
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${val === 'professional' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
-          onClick={() => setVal('professional')}
+          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${val === 'real' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
+          onClick={() => setVal('real')}
         >
-          Professional
+          Real
         </button>
       </div>
     )
