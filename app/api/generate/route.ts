@@ -58,7 +58,7 @@ Here are examples of hilarious R-rated team names:
 These names are: wildly inappropriate, adult-themed, and extremely funny.`
 
     const promptIntro = isDirty
-      ? `Generate 5 hilarious, edgy, and R-rated sports team names for a ${sport} team. These names must be wildly inappropriate, adult-themed, and extremely funny. In dirty mode, edgy adult humor is allowed, but disallowed content includes explicit slurs, hate speech, under-18 references, or illegal content.`
+      ? `Generate 5 hilarious, edgy, and R-rated sports team names for a ${sport} team. These names must be wildly inappropriate, adult-themed, and extremely funny. In dirty mode, edgy adult humor is allowed, but disallowed content includes explicit slurs, racial slurs, hate speech, under-18 references, or illegal content.`
       : `Generate 5 creative and family-appropriate sports team names for a ${sport} team. Keep them fun, original, and suitable for all ages.`
 
     const examples = isDirty ? dirtyExamples : cleanExamples
@@ -116,7 +116,7 @@ Requirements:
           {
             role: 'system',
             content:
-              'You are a world-class brand-naming expert and comedy writer. Your mission: invent original, memorable sports-team names that perfectly match a given sport, location, and tone (family-friendly or R-rated). Avoid clichés; strive for clever wordplay, local references, and cultural nuance. Only return names — no intro, no explanation, no formatting.',
+              'You are a world-class brand-naming expert and comedy writer. Your mission: invent original, memorable sports-team names that perfectly match a given sport, location, and tone (family-friendly or R-rated). Avoid clichés; strive for clever wordplay, local references, and cultural nuance. Never use racial slurs, hate speech, or offensive content. Only return names — no intro, no explanation, no formatting.',
           },
           {
             role: 'user',
