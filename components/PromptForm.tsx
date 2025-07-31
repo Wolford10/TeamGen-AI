@@ -8,7 +8,7 @@ const questions = [
   { key: 'location', question: 'Location or color? (e.g. Boston, blue)' },
   { key: 'cleanOrDirty', question: 'Appropriate?' },
   { key: 'extra', question: 'Is there anything else you want to be included? Any keywords you want?' },
-  { key: 'player', question: 'Player name? (optional - for fantasy football puns)' },
+  { key: 'player', question: 'Player name? (optional - for fantasy puns)' },
 ]
 
 // PaywallModal component
@@ -252,18 +252,33 @@ export default function PromptForm() {
     )
   }
 
+  // Filter questions based on style selection
+  const filteredQuestions = questions.filter((q, index) => {
+    // Always show first 5 questions (sport, style, location, cleanOrDirty, extra)
+    if (index < 5) return true
+    // Only show player question if style is fantasy
+    if (q.key === 'player') return answers.style === 'fantasy'
+    return true
+  })
+
   // Build a flat list of messages (question, then answer if present)
   const messages = [] as { type: 'question' | 'answer', text: string, key: string }[]
   for (let i = 0; i < currentStep; i++) {
-    messages.push({ type: 'question', text: questions[i].question, key: questions[i].key + '-q' })
-    if (answers[questions[i].key]) {
-      messages.push({ type: 'answer', text: answers[questions[i].key], key: questions[i].key + '-a' })
+    const question = filteredQuestions[i]
+    if (question) {
+      messages.push({ type: 'question', text: question.question, key: question.key + '-q' })
+      if (answers[question.key]) {
+        messages.push({ type: 'answer', text: answers[question.key], key: question.key + '-a' })
+      }
     }
   }
   // If waiting for typing, show the pending Q/A pair
-  if (isTyping && currentStep < questions.length && pendingAnswer) {
-    messages.push({ type: 'question', text: questions[currentStep].question, key: questions[currentStep].key + '-q-current' })
-    messages.push({ type: 'answer', text: pendingAnswer, key: questions[currentStep].key + '-a-current' })
+  if (isTyping && currentStep < filteredQuestions.length && pendingAnswer) {
+    const currentQuestion = filteredQuestions[currentStep]
+    if (currentQuestion) {
+      messages.push({ type: 'question', text: currentQuestion.question, key: currentQuestion.key + '-q-current' })
+      messages.push({ type: 'answer', text: pendingAnswer, key: currentQuestion.key + '-a-current' })
+    }
   }
 
   return (
@@ -332,15 +347,15 @@ export default function PromptForm() {
           )
         })}
         {/* Current question as AI bubble (always visible, except when isTyping and already rendered above) */}
-        {currentStep < questions.length && !isTyping && (
+        {currentStep < filteredQuestions.length && !isTyping && (
           <div className="flex w-full justify-start">
             <div className="rounded-full px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold text-base max-w-[70%] md:max-w-[40%]">
-              {questions[currentStep].question}
+              {filteredQuestions[currentStep].question}
             </div>
           </div>
         )}
         {/* Input form (hidden while typing) */}
-        {!isTyping && currentStep < questions.length && (
+        {!isTyping && currentStep < filteredQuestions.length && (
           <div className="flex w-full justify-end">
             <form onSubmit={handleNext} className="flex flex-row gap-2 items-center w-full max-w-[70%] md:max-w-[40%]">
               <div className="flex-1">{renderInput()}</div>
@@ -368,7 +383,7 @@ export default function PromptForm() {
           </div>
         )}
         {/* Generate button after last question */}
-        {currentStep === questions.length && (
+        {currentStep === filteredQuestions.length && (
           <>
             <button
               onClick={handleGenerate}
