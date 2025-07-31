@@ -284,7 +284,7 @@ export default function PromptForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-start py-8 px-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-start py-8 px-4">
       <PaywallModal show={showPaywall && genBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
       
       {/* Logo and Title */}
