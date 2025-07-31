@@ -277,99 +277,99 @@ const TeamPage = ({ params }: TeamPageProps) => {
 
   if (loading || !mascotData) {
     return (
-      <div className="chat-container flex flex-col min-h-screen items-center justify-start py-8 px-2">
+      <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-center py-8 px-4">
         <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <span className="ml-2 text-white">Loading team data...</span>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+          <span className="ml-2 text-gray-800">Loading team data...</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-start py-10 px-2 bg-transparent">
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center py-8 px-4">
       {/* Mascot & Logo Images Side-by-Side */}
       <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8 w-full">
         {/* Mascot Image Card */}
         <div className="flex flex-col items-center">
-          <div className="w-64 h-64 bg-gray-800 rounded-full flex items-center justify-center shadow-2xl border-4 border-white overflow-hidden mb-4">
+          <div className="w-64 h-64 bg-white rounded-lg flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden mb-4">
             {imageUrl ? (
               <img
                 src={imageUrl}
                 alt={`${mascotData.mascotName} mascot`}
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover rounded-lg"
               />
             ) : imageLoading ? (
               <div className="flex flex-col items-center">
-                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white mb-2"></div>
-                <span className="text-gray-300 text-sm">Generating...</span>
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-500 mb-2"></div>
+                <span className="text-gray-600 text-sm">Generating...</span>
               </div>
             ) : (
-              <span className="text-gray-300 text-lg">[Mascot Image]</span>
+              <span className="text-gray-500 text-lg">[Mascot Image]</span>
             )}
           </div>
           <button
             onClick={generateImage}
             disabled={imageLoading || imageBlocked || paidImageCapReached}
-            className="px-6 py-2 bg-blue-600 text-white rounded-full text-base font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow mb-2"
+            className="px-6 py-3 bg-purple-500 text-white rounded-lg text-base font-semibold hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition"
           >
             {imageLoading ? 'Generating...' : 'Generate Mascot'}
           </button>
         </div>
         {/* Logo Image Card */}
         <div className="flex flex-col items-center">
-          <div className="w-64 h-64 bg-gray-800 rounded-2xl flex items-center justify-center shadow-2xl border-4 border-white overflow-hidden mb-4">
+          <div className="w-64 h-64 bg-white rounded-lg flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden mb-4">
             {logoUrl ? (
               <img
                 src={logoUrl}
                 alt={`${teamName} logo`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-lg"
               />
             ) : logoLoading ? (
               <div className="flex flex-col items-center">
-                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white mb-2"></div>
-                <span className="text-gray-300 text-sm">Generating...</span>
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-500 mb-2"></div>
+                <span className="text-gray-600 text-sm">Generating...</span>
               </div>
             ) : (
-              <span className="text-gray-300 text-lg">[Team Logo]</span>
+              <span className="text-gray-500 text-lg">[Team Logo]</span>
             )}
           </div>
           <button
             onClick={generateLogo}
             disabled={logoLoading || imageBlocked || paidImageCapReached}
-            className="px-6 py-2 bg-blue-600 text-white rounded-full text-base font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow mb-2"
+            className="px-6 py-3 bg-purple-500 text-white rounded-lg text-base font-semibold hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition"
           >
             {logoLoading ? 'Generating...' : 'Generate Logo'}
           </button>
         </div>
       </div>
       {/* Team Name */}
-      <h1 className="text-5xl font-extrabold text-white mb-10 tracking-tight text-center">{teamName}</h1>
+      <h1 className="text-5xl font-bold text-gray-800 mb-10 tracking-tight text-center">{teamName}</h1>
       {/* Mascot Section */}
       <div className="w-full max-w-xl flex flex-col items-center mb-8">
-        <div className="w-full rounded-full px-6 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold text-xl text-center mb-3">
+        <div className="w-full rounded-lg px-6 py-3 bg-white text-gray-800 font-semibold text-xl text-center mb-3 shadow-sm border border-gray-200">
           🦁 Mascot
         </div>
-        <div className="w-full rounded-2xl px-6 py-5 bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-medium text-lg text-center">
+        <div className="w-full rounded-lg px-6 py-5 bg-white text-gray-800 font-medium text-lg text-center shadow-sm border border-gray-200">
           <div className="mb-2"><span className="font-bold">Mascot Name:</span> <span className="italic">{mascotData.mascotName} ({mascotData.mascotAnimal})</span></div>
           <div><span className="font-bold">Mascot Personality:</span> {mascotData.mascotPersonality.charAt(0).toUpperCase() + mascotData.mascotPersonality.slice(1)}</div>
         </div>
       </div>
       {/* Team Description Section */}
       <div className="w-full max-w-xl flex flex-col items-center mb-8">
-        <div className="w-full rounded-full px-6 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold text-xl text-center mb-3">
+        <div className="w-full rounded-lg px-6 py-3 bg-white text-gray-800 font-semibold text-xl text-center mb-3 shadow-sm border border-gray-200">
           📖 Team Description
         </div>
-        <div className="w-full rounded-2xl px-6 py-5 bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-medium text-lg text-center leading-relaxed">
+        <div className="w-full rounded-lg px-6 py-5 bg-white text-gray-800 font-medium text-lg text-center leading-relaxed shadow-sm border border-gray-200">
           {mascotData.description}
         </div>
       </div>
       {/* Image generation limit messages */}
       {imageBlocked && !userHasPaid && (
-        <div className="mt-4 text-center text-red-400 font-semibold">
+        <div className="mt-4 text-center text-red-600 font-semibold">
           You have reached your 1 free image generation.<br />
           <button
-            className="underline text-blue-400 hover:text-blue-600 mt-2"
+            className="underline text-purple-600 hover:text-purple-800 mt-2"
             onClick={() => setShowPaywall(true)}
           >
             Upgrade to unlock mascot and logo images!
@@ -377,7 +377,7 @@ const TeamPage = ({ params }: TeamPageProps) => {
         </div>
       )}
       {userHasPaid && paidImageCapReached && (
-        <div className="mt-4 text-center text-yellow-500 font-semibold">
+        <div className="mt-4 text-center text-yellow-600 font-semibold">
           You&apos;ve hit today&apos;s limit. Come back tomorrow for more team-building action!
         </div>
       )}
