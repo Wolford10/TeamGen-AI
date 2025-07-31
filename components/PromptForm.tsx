@@ -197,24 +197,25 @@ export default function PromptForm() {
     setLoading(false)
   }
 
-  // For select-type questions, show dropdowns
+  // For select-type questions, show clean input fields
   const renderInput = () => {
     const key = questions[currentStep].key
     const inputClass =
-      'w-full border border-gray-600 rounded-full px-4 py-2 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition';
+      'w-full border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm';
+    
     if (key === 'style') {
       return (
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${input === 'fantasy' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'fantasy' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('fantasy')}
           >
             Fantasy
           </button>
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${input === 'real' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'real' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('real')}
           >
             Real
@@ -224,17 +225,17 @@ export default function PromptForm() {
     }
     if (key === 'cleanOrDirty') {
       return (
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${input === 'clean' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'clean' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('clean')}
           >
             Yes
           </button>
           <button
             type="button"
-            className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'dirty' ? 'bg-purple-600 text-white' : 'bg-gray-700 text-white hover:bg-purple-400'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'dirty' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('dirty')}
           >
             No
@@ -247,6 +248,7 @@ export default function PromptForm() {
         className={inputClass}
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        placeholder={key === 'sport' ? 'Football, Soccer, Basketball, ETC' : key === 'location' ? 'Boston, Blue, etc.' : key === 'extra' ? 'Any keywords or themes' : key === 'player' ? 'Player name for fantasy puns' : ''}
         autoFocus
       />
     )
@@ -282,23 +284,35 @@ export default function PromptForm() {
   }
 
   return (
-    <div className="chat-container flex flex-col min-h-screen items-center justify-start py-8 px-2">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-start py-8 px-4">
       <PaywallModal show={showPaywall && genBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
-      <div className="chat-header text-center text-6xl font-extrabold text-white mb-12 tracking-tight">Team Name Generator</div>
-      <div className="chat-body flex flex-col gap-6 w-full max-w-4xl mx-auto">
-        {/* Render each message (question or answer) as its own row, left or right aligned */}
+      
+      {/* Logo and Title */}
+      <div className="text-center mb-12">
+        <div className="flex justify-center mb-4">
+          <div className="w-8 h-8 flex items-center justify-center">
+            <div className="w-2 h-2 bg-gray-800 rounded-full mx-1"></div>
+            <div className="w-2 h-2 bg-gray-800 rounded-full mx-1"></div>
+            <div className="w-2 h-2 bg-gray-800 rounded-full mx-1"></div>
+          </div>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">Team Name Generator</h1>
+      </div>
+      
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Render each message (question or answer) as its own row */}
         {messages.map((msg, idx) => {
           if (
             msg.type === 'answer' &&
-            currentStep === questions.length &&
+            currentStep === filteredQuestions.length &&
             teamNames.length > 0 &&
             !isTyping
           ) {
             // Find the question key
-            const qIdx = questions.findIndex(q => q.key + '-a' === msg.key)
-            const qKey = questions[qIdx]?.key
+            const qIdx = filteredQuestions.findIndex(q => q.key + '-a' === msg.key)
+            const qKey = filteredQuestions[qIdx]?.key
             return (
-              <div key={msg.key} className="flex w-full justify-end items-center gap-2">
+              <div key={msg.key} className="flex w-full justify-end items-center gap-2 mb-4">
                 {editingKey === qKey ? (
                   <EditAnswerForm
                     qKey={qKey}
@@ -312,13 +326,13 @@ export default function PromptForm() {
                 ) : (
                   <>
                     <div
-                      className="rounded-full px-4 py-2 text-base max-w-[70%] md:max-w-[40%] bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-medium"
+                      className="bg-white rounded-lg px-4 py-3 text-base max-w-[70%] md:max-w-[40%] text-gray-800 font-medium shadow-sm border border-gray-200"
                     >
                       {msg.text}
                     </div>
                     <button
                       type="button"
-                      className="ml-2 px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-semibold hover:bg-blue-600"
+                      className="ml-2 px-3 py-1 rounded-lg bg-purple-500 text-white text-xs font-semibold hover:bg-purple-600 transition"
                       onClick={() => setEditingKey(qKey)}
                     >
                       Edit
@@ -332,13 +346,13 @@ export default function PromptForm() {
           return (
             <div
               key={msg.key}
-              className={`flex w-full ${msg.type === 'question' ? 'justify-start' : 'justify-end'}`}
+              className={`flex w-full mb-4 ${msg.type === 'question' ? 'justify-start' : 'justify-end'}`}
             >
               <div
-                className={`rounded-full px-4 py-2 text-base max-w-[70%] md:max-w-[40%] ${
+                className={`rounded-lg px-4 py-3 text-base max-w-[70%] md:max-w-[40%] ${
                   msg.type === 'question'
-                    ? 'bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold'
-                    : 'bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-medium'
+                    ? 'bg-white text-gray-800 font-semibold shadow-sm border border-gray-200'
+                    : 'bg-white text-gray-800 font-medium shadow-sm border border-gray-200'
                 }`}
               >
                 {msg.text}
@@ -348,23 +362,23 @@ export default function PromptForm() {
         })}
         {/* Current question as AI bubble (always visible, except when isTyping and already rendered above) */}
         {currentStep < filteredQuestions.length && !isTyping && (
-          <div className="flex w-full justify-start">
-            <div className="rounded-full px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold text-base max-w-[70%] md:max-w-[40%]">
+          <div className="flex w-full justify-start mb-4">
+            <div className="rounded-lg px-4 py-3 bg-white text-gray-800 font-semibold text-base max-w-[70%] md:max-w-[40%] shadow-sm border border-gray-200">
               {filteredQuestions[currentStep].question}
             </div>
           </div>
         )}
         {/* Input form (hidden while typing) */}
         {!isTyping && currentStep < filteredQuestions.length && (
-          <div className="flex w-full justify-end">
-            <form onSubmit={handleNext} className="flex flex-row gap-2 items-center w-full max-w-[70%] md:max-w-[40%]">
+          <div className="flex w-full justify-end mb-6">
+            <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-[70%] md:max-w-[40%]">
               <div className="flex-1">{renderInput()}</div>
               <button
                 type="submit"
-                className="px-6 py-2 rounded-full bg-blue-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-blue-600 active:scale-95 duration-200 ease-in-out"
+                className="px-4 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
                 disabled={!input}
               >
-                Next
+                →
               </button>
             </form>
           </div>
@@ -387,7 +401,7 @@ export default function PromptForm() {
           <>
             <button
               onClick={handleGenerate}
-              className="w-full max-w-md mx-auto mt-4 px-6 py-3 rounded-full bg-purple-600 text-white font-semibold text-lg transition disabled:opacity-50"
+              className="w-full max-w-md mx-auto mt-6 px-6 py-4 rounded-lg bg-purple-500 text-white font-semibold text-lg transition disabled:opacity-50 hover:bg-purple-600 shadow-md"
               disabled={loading || genBlocked || paidCapReached}
             >
               {loading ? 'Generating...' : 'Generate Team Names'}
@@ -410,18 +424,18 @@ export default function PromptForm() {
             )}
           </>
         )}
-        {/* Team name choices as AI message bubbles */}
+        {/* Team name choices as clean cards */}
         {teamNames.length > 0 && (
-          <div className="flex flex-col gap-4 w-full items-center mt-6">
-            <div className="rounded-full px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold text-base max-w-[70%] md:max-w-[40%] text-center">
+          <div className="flex flex-col gap-4 w-full items-center mt-8">
+            <div className="rounded-lg px-4 py-3 bg-white text-gray-800 font-semibold text-base max-w-[70%] md:max-w-[40%] text-center shadow-sm border border-gray-200">
               Click a team name to see mascot, lore, and a custom AI mascot image!
             </div>
-            <div className="flex flex-col gap-2 w-full items-center">
+            <div className="flex flex-col gap-3 w-full items-center">
               {teamNames.map((name, idx) => (
                 <Link
                   key={idx}
                   href={`/team/${encodeURIComponent(name)}`}
-                  className="rounded-full px-4 py-2 w-full max-w-[70%] md:max-w-[40%] text-base font-medium transition bg-gray-800 text-white hover:bg-blue-500 hover:text-white text-center"
+                  className="rounded-lg px-4 py-3 w-full max-w-[70%] md:max-w-[40%] text-base font-medium transition bg-white text-gray-800 hover:bg-purple-50 hover:border-purple-300 text-center shadow-sm border border-gray-200 hover:shadow-md"
                 >
                   {name}
                 </Link>
@@ -439,21 +453,21 @@ function EditAnswerForm({ qKey, initialValue, onSave, onCancel }: { qKey: string
   const [val, setVal] = useState(initialValue)
   // Reuse the input UI logic for each question type
   const inputClass =
-    'w-full border border-gray-600 rounded-full px-4 py-2 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition';
+    'w-full border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm';
   let inputElem = null
   if (qKey === 'style') {
     inputElem = (
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${val === 'fantasy' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+          className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${val === 'fantasy' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
           onClick={() => setVal('fantasy')}
         >
           Fantasy
         </button>
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-green-400 ${val === 'real' ? 'bg-green-600 text-white' : 'bg-gray-700 text-white hover:bg-green-400'}`}
+          className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${val === 'real' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
           onClick={() => setVal('real')}
         >
           Real
@@ -462,17 +476,17 @@ function EditAnswerForm({ qKey, initialValue, onSave, onCancel }: { qKey: string
     )
   } else if (qKey === 'cleanOrDirty') {
     inputElem = (
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 ${val === 'clean' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white hover:bg-blue-400'}`}
+          className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${val === 'clean' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
           onClick={() => setVal('clean')}
         >
           Yes
         </button>
         <button
           type="button"
-          className={`px-4 py-2 rounded-full font-semibold transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${val === 'dirty' ? 'bg-purple-600 text-white' : 'bg-gray-700 text-white hover:bg-purple-400'}`}
+          className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${val === 'dirty' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
           onClick={() => setVal('dirty')}
         >
           No
@@ -500,14 +514,14 @@ function EditAnswerForm({ qKey, initialValue, onSave, onCancel }: { qKey: string
       <div className="flex-1">{inputElem}</div>
       <button
         type="submit"
-        className="px-4 py-2 rounded-full bg-green-500 text-white font-semibold transition hover:bg-green-600"
+        className="px-4 py-3 rounded-lg bg-purple-500 text-white font-semibold transition hover:bg-purple-600 shadow-sm"
         disabled={!val}
       >
         Save
       </button>
       <button
         type="button"
-        className="px-4 py-2 rounded-full bg-gray-500 text-white font-semibold transition hover:bg-gray-600"
+        className="px-4 py-3 rounded-lg bg-gray-500 text-white font-semibold transition hover:bg-gray-600 shadow-sm"
         onClick={onCancel}
       >
         Cancel
