@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-training-data": "tsx scripts/generate-training-data.ts",
+    "test-prompt": "tsx scripts/test-new-prompt.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -26,6 +28,9 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "csv-parse": "^5.5.3",
+    "csv-stringify": "^6.4.5",
+    "tsx": "^4.19.2"
   }
 }

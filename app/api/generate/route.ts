@@ -17,108 +17,64 @@ export async function POST(req: NextRequest) {
       cleanOrDirty,
       extra,
       level,
-      player,
+      player, // optional – for fantasy-football puns
     } = await req.json()
 
-    // Base prompt intro depending on clean/dirty
+    // -------------- Prompt Engineering Upgrade --------------
     const isDirty = cleanOrDirty === 'dirty'
-    const isFantasy = style === 'fantasy'
 
-    const cleanExamples = `
-Here are examples of great family-friendly team names:
+    // Tone templates
+    const toneBlock = isDirty
+      ? `Tone: edgy, irreverent, adult humor allowed. Forbidden: hate speech, slurs, under-18 references.`
+      : `Tone: playful, family-friendly, suitable for all ages.`
 
-Animals:
-Bobcats, Wolves, Tigers, Panthers, Bulldogs, Cheetahs, Cougars, Pumas
-Hawks, Eagles, Falcons
-Bears, Lions, Raptors
+    // Optional player line
+    const playerLine =
+      player && sport?.toLowerCase() === 'football'
+        ? `Target player for pun-based fantasy football names: ${player}.`
+        : ''
 
-Strong and powerful:
-Avengers, Hot Shots, Outlaws, Rebels, Gladiators, Marauders, Mavericks, Titans
-Inferno, Fireballs, Hurricanes
-
-Teamwork and Determination:
-Dream Team, A-Team, Challengers, Achievers, Royals, Warriors
-Apex, Aces, Strikers
-
-Fun and Unique:
-Ninjas, Superheroes, Divas, Knights, Rockets, Wildcats
-
-These names are: memorable, fun, powerful, and suitable for all ages.`
-
-    const dirtyExamples = `
-Here are examples of hilarious R-rated team names:
-- The Ball Busters
-- The Dick Punchers
-- The Ass Kickers
-- The Nut Crushers
-- The Sack Smashers
-- The Cock Blockers
-- The Pussy Pounders
-- The Dick Destroyers
-- The Ass Assassins
-- The Ball Bangers
-
-These names are: wildly inappropriate, adult-themed, and extremely funny.`
-
-    const promptIntro = isDirty
-      ? `Generate 5 hilarious, edgy, and R-rated sports team names for a ${sport} team. These names must be wildly inappropriate, adult-themed, and extremely funny. In dirty mode, edgy adult humor is allowed, but disallowed content includes explicit slurs, racial slurs, hate speech, under-18 references, or illegal content.`
-      : isFantasy
-      ? `Generate 5 creative and fantasy-themed sports team names for a ${sport} team. These names should be imaginative, epic, and suitable for fantasy leagues or creative teams.`
-      : `Generate 5 creative and realistic sports team names for a ${sport} team. These names should be professional, authentic, and suitable for real sports teams or competitive leagues.`
-
-    const examples = isDirty ? dirtyExamples : cleanExamples
-
-    // Player-specific prompt for fantasy style
-    const playerLine = player && style === 'fantasy'
-      ? `Focus on clever wordplay using the player's full name ("${player}"). Avoid repeating existing well-known puns verbatim; invent NEW ones.`
-      : ''
-
-    const fewShotExample = `
-Example Input: sport: "basketball", location: "Seattle", style: "fantasy", appropriateness: "clean", level: "adult", extra: "coffee"
-Example Output:
-Seattle Slam Dunkers
-Emerald City Ballers
-Coffee Bean Bouncers
-Puget Sound Shooters
-Rain City Rebels
-
-Notice: Alliteration, local references (Emerald City, Puget Sound, Rain City), sport-specific terms, and theme integration.`
-
-    // Build full prompt
+    // Core user prompt with step-by-step instructions
     const prompt = `
-${promptIntro}
-
-${examples}
-
-${fewShotExample}
-
+Sport: ${sport}
+Location / primary color: ${location}
+Audience level: ${level || 'any'}
 ${playerLine}
+Extra keywords / themes: ${extra || 'none'}
 
-Details:
-- Sport: ${sport}
-- Style: ${style} (fantasy/real)
-- Appropriateness: ${cleanOrDirty} (clean/dirty)
-- Location or color: ${location}
-- Level: ${level || 'any'}
-- Extra keywords or themes: ${extra}
-- Player: ${player || 'none'}
+${toneBlock}
 
-Requirements:
-- Each name must be on its own line
-- No numbers, no bullets, no quotes
-- Do NOT explain anything
-- Only return the team names
-- Follow the style and quality of the examples above
-- Incorporate the user's answers to all prompt questions (sport, style, location or color, level, extra keywords) into each team name as appropriate. For example, if the sport is 'basketball', style is 'funny', location is 'Wisconsin', level is 'youth', and extra is 'cheese', a name could be 'Wisconsin Cheese Ballers'.
-- If a location or color is provided, prepend it to each team name. For example, if the location is 'Wisconsin' and the name is 'Warriors', output 'Wisconsin Warriors'.
-- Max 3 words per name
-- At least 2 names must use alliteration or rhyme
-- Avoid clichés like Eagles, Tigers, Warriors, Lions (unless combined with location/theme)
-- Each name must be unique within the list
-- Use clever wordplay, local references, and cultural nuance when possible
-- If a player name is provided for fantasy style, each name must clearly pun on the player's first or last name
-- Do not repeat names from example blocks
+TASKS
+1. Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).
+2. Using those ideas, craft EXACTLY 5 unique team names.
+   • Max 3 words each
+   • At least 2 names must feature alliteration or rhyme
+   • Avoid tired clichés like Eagles, Tigers, Warriors, Lions
+   • Names must sound plausible for a real team—no nonsense words
+   • In dirty tone, keep it edgy but within the forbidden-content rules above
+3. Output ONLY the 5 names, one per line, no numbering, no extra text.
+
+If a player name is supplied, each team name MUST pun on that player's first or last name and must not duplicate classic examples (Hurts So Good, Sweet Child O' Mahomes, etc.).
 `
+
+    // Few-shot pun examples (only when relevant)
+    const fewShotExamples =
+      player && sport?.toLowerCase() === 'football'
+        ? [
+            {
+              role: 'assistant',
+              content: `Example output for player "Jalen Hurts":\nHurts So Good\nHurts Locker Heroes\nHurts, Don't It?\nHurts Condition\nHurts So Bad`,
+            },
+            {
+              role: 'assistant',
+              content: `Example output for player "Patrick Mahomes":\nSweet Child O' Mahomes\nMahomes Alone\nMahomies Forever\nMahomes Field Advantage\nMahomes Improvement`,
+            },
+            {
+              role: 'assistant',
+              content: `Example output for player "Aaron Rodgers":\nMr. Rodgers Neighborhood\nDiscount Double Checkers\nRodgers That\nRodgers Rate Renegades\nA-Rod Squad`,
+            },
+          ]
+        : []
 
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -128,30 +84,20 @@ Requirements:
       },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
+        temperature: 0.9,
+        top_p: 0.95,
         messages: [
           {
             role: 'system',
             content:
-              'You are a world-class brand-naming expert and comedy writer. Your mission: invent original, memorable sports-team names that perfectly match a given sport, location, and tone (family-friendly or R-rated). Avoid clichés; strive for clever wordplay, local references, and cultural nuance. Never use racial slurs, hate speech, or offensive content. Only return names — no intro, no explanation, no formatting.',
+              'You are a world-class brand-naming expert and comedy writer. Deliver only the final team names—no explanations, no numbering.',
           },
-          // Few-shot examples for player puns (only when relevant)
-          ...(player && style === 'fantasy' ? [
-            {
-              role: 'assistant',
-              content: 'Input: player = "Patrick Mahomes"\nOutput:\nSweet Child O\' Mahomes\nMahomes Alone\nShow Me The Mahomes\nMahomes Sweet Mahomes\nMahomes on the Range'
-            },
-            {
-              role: 'assistant',
-              content: 'Input: player = "Lamar Jackson"\nOutput:\nAction Jackson\nLamar the Merrier\nJackson 5-TD\nLamar\'s Army\nJackson Pollock'
-            }
-          ] : []),
+          ...fewShotExamples,
           {
             role: 'user',
             content: prompt,
           },
         ],
-        temperature: 0.9,
-        top_p: 0.95,
       }),
     })
 
