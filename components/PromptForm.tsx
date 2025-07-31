@@ -201,21 +201,21 @@ export default function PromptForm() {
   const renderInput = () => {
     const key = questions[currentStep].key
     const inputClass =
-      'w-full border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm';
+      'w-full border border-gray-300 rounded-lg px-6 py-4 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm text-lg';
     
     if (key === 'style') {
       return (
         <div className="flex gap-3">
           <button
             type="button"
-            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'fantasy' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
+            className={`flex-1 px-6 py-4 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg ${input === 'fantasy' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('fantasy')}
           >
             Fantasy
           </button>
           <button
             type="button"
-            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'real' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
+            className={`flex-1 px-6 py-4 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg ${input === 'real' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('real')}
           >
             Real
@@ -228,14 +228,14 @@ export default function PromptForm() {
         <div className="flex gap-3">
           <button
             type="button"
-            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'clean' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
+            className={`flex-1 px-6 py-4 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg ${input === 'clean' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('clean')}
           >
             Yes
           </button>
           <button
             type="button"
-            className={`flex-1 px-4 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 ${input === 'dirty' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
+            className={`flex-1 px-6 py-4 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg ${input === 'dirty' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-300 shadow-sm'}`}
             onClick={() => setInput('dirty')}
           >
             No
@@ -434,11 +434,11 @@ export default function PromptForm() {
       {/* Input form at bottom center */}
       {!isTyping && currentStep < filteredQuestions.length && (
         <div className="w-full flex justify-center mt-8">
-          <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-md">
+          <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-lg">
             <div className="flex-1">{renderInput()}</div>
             <button
               type="submit"
-              className="px-4 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
+              className="px-6 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
               disabled={!input}
             >
               →
