@@ -284,7 +284,7 @@ export default function PromptForm() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-start py-8 px-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center py-8 px-4">
       <PaywallModal show={showPaywall && genBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
       
       {/* Logo and Title */}
@@ -299,7 +299,7 @@ export default function PromptForm() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">Team Name Generator</h1>
       </div>
       
-      <div className="w-full max-w-2xl mx-auto">
+      <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
         {/* Render each message (question or answer) as its own row */}
         {messages.map((msg, idx) => {
           if (
@@ -368,21 +368,7 @@ export default function PromptForm() {
             </div>
           </div>
         )}
-        {/* Input form (hidden while typing) */}
-        {!isTyping && currentStep < filteredQuestions.length && (
-          <div className="flex w-full justify-end mb-6">
-            <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-[70%] md:max-w-[40%]">
-              <div className="flex-1">{renderInput()}</div>
-              <button
-                type="submit"
-                className="px-4 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
-                disabled={!input}
-              >
-                →
-              </button>
-            </form>
-          </div>
-        )}
+
         {/* Typing indicator (shows below the question/answer bubbles) */}
         {isTyping && (
           <div className="flex w-full justify-start mt-2">
@@ -444,6 +430,22 @@ export default function PromptForm() {
           </div>
         )}
       </div>
+      
+      {/* Input form at bottom center */}
+      {!isTyping && currentStep < filteredQuestions.length && (
+        <div className="w-full flex justify-center mt-8">
+          <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-md">
+            <div className="flex-1">{renderInput()}</div>
+            <button
+              type="submit"
+              className="px-4 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
+              disabled={!input}
+            >
+              →
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   )
 }
