@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
       cleanOrDirty,
       extra,
       level,
+      player,
     } = await req.json()
 
     // Base prompt intro depending on clean/dirty
@@ -67,6 +68,11 @@ These names are: wildly inappropriate, adult-themed, and extremely funny.`
 
     const examples = isDirty ? dirtyExamples : cleanExamples
 
+    // Player-specific prompt for fantasy football
+    const playerLine = player && sport === 'football' && style === 'fantasy'
+      ? `Focus on clever wordplay using the player's full name ("${player}"). Avoid repeating existing well-known puns verbatim; invent NEW ones.`
+      : ''
+
     const fewShotExample = `
 Example Input: sport: "basketball", location: "Seattle", style: "fantasy", appropriateness: "clean", level: "adult", extra: "coffee"
 Example Output:
@@ -86,6 +92,8 @@ ${examples}
 
 ${fewShotExample}
 
+${playerLine}
+
 Details:
 - Sport: ${sport}
 - Style: ${style} (fantasy/real)
@@ -93,6 +101,7 @@ Details:
 - Location or color: ${location}
 - Level: ${level || 'any'}
 - Extra keywords or themes: ${extra}
+- Player: ${player || 'none'}
 
 Requirements:
 - Each name must be on its own line
@@ -107,6 +116,8 @@ Requirements:
 - Avoid clichés like Eagles, Tigers, Warriors, Lions (unless combined with location/theme)
 - Each name must be unique within the list
 - Use clever wordplay, local references, and cultural nuance when possible
+- If a player name is provided for fantasy football, each name must clearly pun on the player's first or last name
+- Do not repeat names from example blocks
 `
 
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -123,6 +134,17 @@ Requirements:
             content:
               'You are a world-class brand-naming expert and comedy writer. Your mission: invent original, memorable sports-team names that perfectly match a given sport, location, and tone (family-friendly or R-rated). Avoid clichés; strive for clever wordplay, local references, and cultural nuance. Never use racial slurs, hate speech, or offensive content. Only return names — no intro, no explanation, no formatting.',
           },
+          // Few-shot examples for player puns (only when relevant)
+          ...(player && sport === 'football' && style === 'fantasy' ? [
+            {
+              role: 'assistant',
+              content: 'Input: player = "Patrick Mahomes"\nOutput:\nSweet Child O\' Mahomes\nMahomes Alone\nShow Me The Mahomes\nMahomes Sweet Mahomes\nMahomes on the Range'
+            },
+            {
+              role: 'assistant',
+              content: 'Input: player = "Lamar Jackson"\nOutput:\nAction Jackson\nLamar the Merrier\nJackson 5-TD\nLamar\'s Army\nJackson Pollock'
+            }
+          ] : []),
           {
             role: 'user',
             content: prompt,

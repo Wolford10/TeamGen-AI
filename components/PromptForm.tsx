@@ -8,6 +8,7 @@ const questions = [
   { key: 'location', question: 'Location or color? (e.g. Boston, blue)' },
   { key: 'cleanOrDirty', question: 'Appropriate?' },
   { key: 'extra', question: 'Is there anything else you want to be included? Any keywords you want?' },
+  { key: 'player', question: 'Player name? (optional - for fantasy football puns)' },
 ]
 
 // PaywallModal component
@@ -76,12 +77,14 @@ export default function PromptForm() {
     location: string
     cleanOrDirty: string
     extra: string
+    player: string
   }>({
     sport: '',
     style: '',
     location: '',
     cleanOrDirty: '',
     extra: '',
+    player: '',
   })
   const [currentStep, setCurrentStep] = useState(0)
   const [input, setInput] = useState('')
