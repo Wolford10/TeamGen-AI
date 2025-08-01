@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "generate-training-data": "tsx scripts/generate-training-data.ts",
-    "test-prompt": "tsx scripts/test-new-prompt.ts"
+    "test-prompt": "tsx scripts/test-new-prompt.ts",
+    "convert-excel": "tsx scripts/convert-excel-to-finetune.ts",
+    "setup-finetune": "tsx scripts/setup-fine-tuning.ts",
+    "check-status": "tsx scripts/check-finetune-status.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -17,7 +20,8 @@
     "openai": "^5.10.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stripe": "^18.3.0"
+    "stripe": "^18.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,12 +29,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "csv-parse": "^5.5.3",
+    "csv-stringify": "^6.4.5",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "csv-parse": "^5.5.3",
-    "csv-stringify": "^6.4.5",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "typescript": "^5"
   }
 }

@@ -83,7 +83,7 @@ If a player name is supplied, each team name MUST pun on that player's first or 
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'ft:gpt-3.5-turbo-0125:personal::BzZs0lEf',
         temperature: 0.9,
         top_p: 0.95,
         messages: [
