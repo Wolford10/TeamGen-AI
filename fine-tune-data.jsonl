@@ -1,0 +1,18 @@
+{"messages":[{"role":"user","content":"sport: baseball, location: , style: fantasy, appropriate: clean, keywords: clutch"},{"role":"assistant","content":"cold bloded clutchers"}]}
+{"messages":[{"role":"user","content":"sport: basketball, location: , style: real, appropriate: clean, keywords: blitz"},{"role":"assistant","content":"blitzin ballers"}]}
+{"messages":[{"role":"user","content":"sport: lacrosse, location: Boston, style: real, appropriate: clean, keywords: thunder"},{"role":"assistant","content":"Thunderbirds"}]}
+{"messages":[{"role":"user","content":"sport: soccer, location: New York, style: fantasy, appropriate: clean, keywords: fire"},{"role":"assistant","content":"Big Apple firebirds"}]}
+{"messages":[{"role":"user","content":"sport: golf, location: , style: real, appropriate: dirty, keywords: blitz"},{"role":"assistant","content":"Blitzin birdies"}]}
+{"messages":[{"role":"user","content":"sport: basketball, location: Denver, style: fantasy, appropriate: dirty, keywords: fire"},{"role":"assistant","content":"firing nuggets"}]}
+{"messages":[{"role":"user","content":"sport: baseball, location: , style: fantasy, appropriate: clean, keywords: , player: Brice Turang"},{"role":"assistant","content":"woo-turang-clan"}]}
+{"messages":[{"role":"user","content":"sport: lacrosse, location: Seattle, style: real, appropriate: dirty, keywords: storm"},{"role":"assistant","content":"Seattle Storm"}]}
+{"messages":[{"role":"user","content":"sport: lacrosse, location: , style: real, appropriate: dirty, keywords: storm"},{"role":"assistant","content":"ThunderLax"}]}
+{"messages":[{"role":"user","content":"sport: golf, location: , style: fantasy, appropriate: dirty, keywords: no, player: Tiger Woods"},{"role":"assistant","content":"Tigers Wood"}]}
+{"messages":[{"role":"user","content":"sport: football, location: Tampa Bay, style: fantasy, appropriate: clean, keywords: no, player: Tom Brady"},{"role":"assistant","content":"Tampa brady"}]}
+{"messages":[{"role":"user","content":"sport: football, location: , style: fantasy, appropriate: clean, keywords: , player: Tom Brady"},{"role":"assistant","content":"The real slim Brady"}]}
+{"messages":[{"role":"user","content":"sport: basketball, location: , style: fantasy, appropriate: clean, keywords: no, player: LeBron James"},{"role":"assistant","content":"Lebron the builder"}]}
+{"messages":[{"role":"user","content":"sport: basketball, location: Detroit, style: fantasy, appropriate: clean, keywords: no, player: LeBron James"},{"role":"assistant","content":"Leballers"}]}
+{"messages":[{"role":"user","content":"sport: soccer, location: , style: fantasy, appropriate: dirty, keywords: no, player: Lionel Messi"},{"role":"assistant","content":"messi's Balls"}]}
+{"messages":[{"role":"user","content":"sport: basketball, location: , style: fantasy, appropriate: clean, keywords: bald, player: LeBron James"},{"role":"assistant","content":"Lebaldspot"}]}
+{"messages":[{"role":"user","content":"sport: football, location: , style: fantasy, appropriate: dirty, keywords: , player: Jared Goff"},{"role":"assistant","content":"Jerk Goff"}]}
+{"messages":[{"role":"user","content":"sport: football, location: , style: fantasy, appropriate: clean, keywords: , player: brett favre"},{"role":"assistant","content":"Favre Dollar Footlong"}]}

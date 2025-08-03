@@ -1,0 +1,501 @@
+sport,location,fantasyOrReal,appropriate,keywords,playerName,generatedNames,rating
+golf,Los Angeles,fantasy,yes,shadow,Tom Brady,"Los Angeles Shadow Swings
+Brady's Fairway Fantasies
+Tom's Tee Time Titans
+L.A. Back Nine Bandits
+Brady's Shadow Golfers",2
+basketball,Texas,real,yes,fire,Shohei Ohtani,"Texas Fireballers
+Ohtani's Blaze
+Texas Heatwave
+Lone Star Inferno
+Shohei Shooters",3
+volleyball,Seattle,fantasy,no,ice,Lionel Messi,"Seattle Set Smashers
+Messi's Ice Breakers
+Seattle Spike F**kers
+Messi's Volley Vixens
+Soggy Bottom Spikers",3
+soccer,Seattle,fantasy,yes,steel,LeBron James,"Seattle Steel LeBronatics
+LeBron's Steel Strikers
+Emerald City Pitch Pirates
+Jameson’s Goal Getters
+LeBron's Steel Shielders",2
+lacrosse,Denver,real,yes,clutch,LeBron James,"Denver Lax Clutchers
+Clutch City Crosseurs
+LeBron's Lacrosse Legends
+Rocky Mountain Rippers
+Mile High Mavericks",4
+football,Los Angeles,fantasy,no,steel,Serena Williams,"Los Angeles Steel Slammers
+Serena's Sacked Souls
+Steel Curtain Callers
+Los Angeles Touchdown Teasers
+Williams' Wild Steelers",4
+basketball,Denver,real,no,thunder,none,"Denver Thunder Thighs
+Mile High Ballers
+Rocky Mountain Rumpers
+Blizzard Bangers
+Stoned Slam Dunks",2
+baseball,Chicago,real,yes,blitz,Sidney Crosby,"Chicago Blitz Bats
+Crosby's Crackers
+Windy City Whackers
+Chicago Sluggers
+Blitzkrieg Batters",1
+wrestling,Denver,real,yes,clutch,Connor McDavid,"Denver Clutch Crushers
+Mile High Mat Monsters
+Connor's Clutch Grapplers
+Rocky Mountain Rasslers
+Denver Pin Pioneers",3
+golf,Atlanta,fantasy,yes,steel,LeBron James,"Atlanta Steel Swingers
+LeBron's Iron Drives
+Atlanta Fairway Fantasies
+James' Steel Par-tee
+Swingin' with LeBron",2
+football,none,fantasy,yes,clutch,Shohei Ohtani,"Ohtani's Clutch Commanders
+Shohei's Gridiron Guardians
+Touchdown Titans of Ohtani
+Ohtani's End Zone Enchanters
+Clutch Kickers of Ohtani",4
+football,Texas,real,yes,storm,Shohei Ohtani,"Texas Thunder Ohtanis
+Lone Star Storm Chasers
+Ohtani's Storm Surge
+Texas Tempest Tacklers
+Big Tex Twisters",2
+football,Texas,fantasy,yes,shadow,none,"Texas Shadow Stalkers
+Lone Star Nightshades
+Texas Gloom Gladiators
+Shadowy Spurs United
+Midnight Texan Phantoms",1
+rugby,Chicago,real,yes,no,none,"Chicago Ruck Stars
+Windy City Scrummasters
+Chicago Try Harders
+Lakefront Linebreakers
+Bear Down Brawlers",2
+hockey,Denver,real,no,blitz,Connor McDavid,"Denver Puck Bangers
+Denver McDavid's Mayhem
+Blitzed Ice Bandits
+Denver Goal Diggers
+Denver High Stickers",2
+golf,New York,fantasy,no,blitz,Tiger Woods,"New York Woodsman Blasters
+New York Tiger Teasers
+Blitzed on the Green
+New York Fairway Follies
+Tiger's Teed Off Troupe",2
+baseball,Chicago,real,yes,clutch,LeBron James,"Chicago Clutch Kings
+LeBron's Chicago Sluggers
+Windy City Whiffers
+Chicago Base Breakers
+Cubbie Clutch Crew",3
+lacrosse,Denver,fantasy,no,dunk,Michael Jordan,"Denver Dilly Dallyers
+Jordan's Jockstraps
+Lacrosse for the Bros
+Denver Dunkin' Duds
+Michael's Mismatched Mavens",2
+volleyball,none,real,yes,thunder,Sidney Crosby,"Thunderous Sidesteps
+Crosby's Spike Surge
+Pacific Thunderclap
+Sid's Serve Squad
+Lightning Volley Vibes",1
+lacrosse,Denver,fantasy,no,clutch,none,"Denver Dirty Diggers
+Denver Clutch Clutchers
+Denver Lacrosse Lechers
+Denver Ball Whackers
+Denver Stick Flickers",3
+rugby,Boston,fantasy,yes,dunk,Sidney Crosby,"Boston Crosby Crushers
+Dunkin' Crosby Knights
+Crosby's Rugby Raiders
+Boston Bouncing Beasts
+Crosby’s High-Flying Heroes",4
+basketball,Boston,fantasy,yes,dunk,Lionel Messi,"Boston Messi Dunkers
+Messi's Mystic Hoopers
+Bean Town Bouncers
+Lob City Messi
+Dunkin' Messis",4
+wrestling,Detroit,fantasy,yes,shadow,Shohei Ohtani,"Detroit Shadow Shooters
+Ohtani's Phantom Grapplers
+Dark Knight Ohtani
+Detroit Dusk Demons
+Ohtani's Steel Shadows",3
+volleyball,Los Angeles,fantasy,no,no,Sidney Crosby,"Los Angeles Spiking Sidneys
+Crosby’s Ball Bangers
+L.A. Serve & Destroy
+Crosby’s Net Crushers
+Volleyball Vixens of L.A.",2
+lacrosse,Atlanta,real,no,blitz,Lionel Messi,"Atlanta Lacrosse Lickers
+Atlanta Messi Misfits
+Atlanta Blitzed Ballers
+Atlanta Stick It To 'Em
+Atlanta Goal Gropers",3
+golf,Denver,fantasy,no,thunder,Lionel Messi,"Denver Divot Destroyers
+Messi's Thunderous Balls
+Thunderous Tees of Messi
+Messi's Back Nine Brawlers
+Denver Hole-in-One Hooligans",4
+rugby,Boston,fantasy,yes,fire,none,"Boston Blaze Ruggers
+Firebrand Brawlers
+Burning Beacons
+Flame-Fisted Fighters
+Inferno Raiders",2
+volleyball,New York,real,yes,dragon,Connor McDavid,"New York Net Dragons
+McDavid's Dragon Smash
+Big Apple Spike Squad
+New York Volley Vortex
+Empire State Dragonflies",1
+wrestling,none,fantasy,yes,thunder,none,"Thunderous Grapplers
+Storm Bringers Wrestling
+Thunderbolt Titans
+Electrifying Body Slammers
+Lightning Lockdown League",2
+golf,Detroit,real,yes,dunk,LeBron James,"Detroit Dunkin' Drivers
+LeBron's Fairway Flyers
+Motor City Mulligans
+Detroit Birdie Bandits
+Tee Time Titans",3
+golf,Texas,fantasy,yes,no,LeBron James,"Texas Tee-Time Titans
+LeBron's Birdie Brigade
+Fairway Kings of LeBron
+Lone Star Swing Kings
+James' Jagged Irons",4
+football,none,real,yes,shadow,Lionel Messi,"Shadow Messi Marvels
+Shadow Strikers
+Shadow Phantom Footers
+Shadow Sneaky Shadows
+Shadow Goal Getters",4
+wrestling,Boston,fantasy,no,fire,Connor McDavid,"Boston McDavid's Mayhem
+Boston Fireball Fools
+Con-Fire McDavid's Crew
+Boston Brawler Bonanza
+McDavid's Inferno Smashers",3
+basketball,Atlanta,real,yes,steel,Tiger Woods,"Atlanta Steel Swingers
+Tiger's Steel Shooters
+Atlanta Iron Dunkers
+Steel City Slam Jam
+Peach State Ball Bouncers",3
+golf,Seattle,real,no,steel,Serena Williams,"Seattle Steel Balls
+Serena's Swinging Sinners
+Puget Pounders
+Emerald City Ejectors
+Rain City Rude Shots",3
+baseball,Miami,real,no,clutch,Connor McDavid,"Miami Clutch Busters
+Miami McDavid's Misfits
+Miami Ballsy Bandits
+Miami Hitters with Attitude
+Miami Home Run Hooligans",2
+volleyball,New York,real,no,fire,Connor McDavid,"New York Fireball Flingers
+New York Spank Bankers
+New York Connor’s Cannons
+New York Set It Off
+New York Spike My Fire",4
+golf,Texas,real,no,ice,Connor McDavid,"Texas Tequila Toppers
+McDavid's Swinging Dicks
+Roughneck Rimming Rovers
+Dallas Double Entendres
+Ice Cold Club Humpers",4
+soccer,Los Angeles,fantasy,no,dunk,Sidney Crosby,"Los Angeles Nutmeggers
+Sidney's Slip and Slide
+Crosby’s Kicking Crew
+Dunking Dicks of LA
+The Los Angeles Goal Getters",3
+football,New York,real,yes,steel,LeBron James,"New York Steel Kings
+LeBron’s Steel Stallions
+New York Iron Giants
+Steel City Strikers
+LeBron's New York Blitz",3
+hockey,Miami,fantasy,no,thunder,Michael Jordan,"Miami Puck Prowlers
+Thunderous Jordans
+Miami Ice Assassins
+Jordans of Thunder
+Miami Rink Rascals",3
+soccer,New York,fantasy,yes,clutch,Lionel Messi,"New York Messengers
+Messi's Magic Makers
+Clutch City Kickers
+New York Clutch Crusaders
+Messi's Marvelous Midfielders",2
+rugby,Seattle,fantasy,yes,storm,Tiger Woods,"Seattle Stormy Woods
+Tiger Tempest Rugby
+Woods of Thunder
+Seattle Soggy Scamps
+Rainy Ruck Masters",2
+hockey,none,real,yes,clutch,Connor McDavid,"Clutch City Chillers
+McDavid's Ice Mavericks
+Frozen Clutch Crushers
+Edmonton Edge Runners
+Northern Lights Netminders",3
+soccer,Atlanta,fantasy,no,blitz,Lionel Messi,"Atlanta Messi Mayhem
+Messi's Blitz Brigade
+Atlanta Goal Getters
+Messi's Ball Busters
+Dirty Atlanta Dribblers",2
+soccer,Atlanta,real,no,fire,Serena Williams,"Atlanta Fireballers
+Atlanta Serena's Serves
+Atlanta Hot Shots
+Atlanta Kickin' It
+Atlanta Blazing Balls",4
+baseball,Boston,fantasy,yes,storm,Connor McDavid,"Boston Storm Chasers
+Connor's Cloud Crushers
+McDavid's Thunder Bats
+Beantown Blusterers
+Fenway Cyclone Swingers",4
+volleyball,Chicago,fantasy,no,fire,Serena Williams,"Chicago Spike Williams
+Fireballer Williams
+Serena's Sizzlers
+Chicago Bump & Grind
+Serena's Scorching Serves",1
+basketball,Seattle,fantasy,no,thunder,Michael Jordan,"Seattle Slammin' Jordans
+Thunderous Jordan Jammers
+Michael's Mischief Makers
+Seattle Squeaky Cleaners
+Jordan's Thunder Thrusts",3
+basketball,Atlanta,fantasy,no,thunder,LeBron James,"Atlanta Thunder Thighs
+LeBron's Thunder Down
+Atlanta Rim Raiders
+James' Jerk Offs
+Ballin' in the ATL",2
+volleyball,Detroit,fantasy,yes,ice,Shohei Ohtani,"Detroit Ohtani Icebreakers
+Detroit Spikehans
+Detroit Volleyhans
+Detroit Shohei Slayers
+Detroit Frosty Flyers",2
+lacrosse,Seattle,real,no,dunk,Lionel Messi,"Seattle Sacked Messis
+Lacrosse Lusty Legends
+Dirty Dunkin' Dicks
+Messi's Ménage à Trois
+Seattle Shafted Shooters",2
+football,Chicago,fantasy,yes,ice,Lionel Messi,"Chicago Ice Messi-ers
+Messi's Frozen Legion
+Chilly Messi Magicians
+Windy City Frost Falcons
+Icebound Messi Knights",1
+rugby,Texas,fantasy,no,no,Tom Brady,"Texas Brady Bunch
+Brady's Bawdy Brawlers
+Lone Star Lotharios
+Tom's Tackle Twisters
+Brady's Ball Baggers",4
+rugby,Boston,fantasy,no,thunder,Shohei Ohtani,"Boston Thunder Thighs
+Ohtani’s Raging Bulls
+Boston Brawling Butts
+Ohtani's Naughty Knights
+Thunderous Tackle Teasers",2
+baseball,New York,real,no,dragon,Sidney Crosby,"New York Dragon Dicks
+New York Crosby's Cocktails
+New York Base Invaders
+New York Foul Balls
+New York Dirty Dragons",2
+hockey,Denver,real,yes,fire,Michael Jordan,"Denver Fire Blazers
+Denver Flame Chasers
+Denver Ice Jordan's
+Denver Pyro Pucksters
+Denver Ember Skaters",4
+hockey,New York,fantasy,yes,dragon,Lionel Messi,"New York Dragon Messengers
+Messi's Icebreath Marauders
+Big Apple Blade Dragons
+New York Goal-Scoring Wyverns
+Messi's Firestorm Flyers",2
+soccer,Atlanta,real,no,clutch,Serena Williams,"Atlanta Clutch Kickers
+Atlanta Serena's Scissorhands
+Atlanta Nutmeg Naughties
+Atlanta Kickin’ It Dirty
+Atlanta Ball Hogs",4
+football,Chicago,fantasy,yes,blitz,none,"Chicago Blitz Brigade
+Windy City Whirlwinds
+Chicago Gridiron Goblins
+Blitzing Bears of Chi-Town
+Shamrock Blitzers",4
+soccer,Boston,fantasy,no,shadow,LeBron James,"Boston Ball Breakers
+LeBron's Lusty Kicks
+Shadowy Scissorhands
+Boston Booty Bouncers
+LeBron's Lethal Shadows",4
+volleyball,Denver,real,no,storm,Michael Jordan,"Denver Dicks in the Sand
+Stormy Spikers
+Michael's Thundering Balls
+Rocky Mountain Rammers
+Mile High Humpers",1
+basketball,Texas,real,yes,no,Tiger Woods,"Texas Woodsmen
+Lone Star Swingers
+Dunkin' Woods
+Texas Tee-Offs
+Longhorn Birdies",4
+golf,Denver,real,yes,fire,none,"Denver Fire Fairways
+Mile High Mashers
+Rocky Mountain Putters
+Denver Blaze Birdies
+Fireball Fairway Fliers",3
+hockey,Detroit,real,no,thunder,none,"Detroit Thunder Thighs
+Detroit Puck F#ckers
+Detroit Slap Shot Sinners
+Detroit Ice Hole Invaders
+Detroit Raging Thunderballs",1
+volleyball,Seattle,real,yes,shadow,none,"Seattle Shadow Spikers
+Seattle Volley Vortex
+Seattle Misty Mavens
+Seattle Net Ninjas
+Seattle Pacific Pointers",3
+baseball,Detroit,real,no,ice,none,"Detroit Ice Holes
+Detroit Frozen Nuts
+Detroit Slap Happy
+Detroit Puck Chuckers
+Detroit Frosty Foulballs",1
+hockey,Atlanta,fantasy,yes,ice,Lionel Messi,"Atlanta Ice Messi-tion
+Messi's Ice Marauders
+Frozen Messi-verse
+Atlanta Puck Messengers
+Ice Cap Messi-tals",1
+rugby,Seattle,fantasy,yes,blitz,Tiger Woods,"Seattle Blitz Woodsmen
+Emerald City Scrum Tigers
+Rugby Woods Rovers
+Blitzing Woodsmen
+Tiger's Tackle Titans",3
+rugby,Atlanta,fantasy,no,dragon,Connor McDavid,"Atlanta Dragon Dicks
+McDavid's Raging Dragons
+Atlanta Try-Hards
+Connor's Cocky Crusaders
+McDavid's Dirty Dragons",2
+baseball,none,real,no,dragon,Michael Jordan,"Dragon Dongs
+Michael's Mischiefs
+Fire Breathers
+Batty Ballers
+Scaly Sinners",2
+rugby,New York,real,yes,fire,Serena Williams,"New York Flame Chasers
+Big Apple Blazers
+Serena's Firestorm
+New York Ember Rollers
+Hudson Heat Seekers",3
+volleyball,Detroit,real,yes,dragon,Lionel Messi,"Detroit Dragon Diggers
+Messi's Dragon Setters
+Detroit Volley Dragons
+Motown Spike Artists
+Lionel's Lifted Nets",3
+volleyball,Miami,fantasy,yes,steel,Lionel Messi,"Miami Mesh Messis
+Steel Spike Squad
+Messi's Magic Mounds
+Volleyball Vortex of Messi
+Miami's Steel Setters",3
+football,New York,fantasy,yes,ice,Serena Williams,"New York Ice Queens
+Serena's Frosted Fielders
+New York Chill Chasers
+Serena's Snowball Squad
+Icecapades of Serena",2
+baseball,Detroit,fantasy,yes,clutch,Connor McDavid,"Detroit Clutch Cats
+McDavid's Diamond Dwellers
+Motor City Swingers
+Connor's Clutch Crew
+Detroit Double Playmakers",2
+wrestling,New York,fantasy,yes,ice,Shohei Ohtani,"New York Ice Titans
+Shohei's Frosty Grapplers
+Chilly Ohtani Challengers
+New York Slapshot Sumo
+Ohtani's Frostbite Fighters",4
+basketball,Texas,real,no,dunk,Sidney Crosby,"Texas Dunkin' Doinks
+Crosby's Rim Rattlers
+Texas Trash Talkers
+Hoop Humpers of Texas
+Sid's Slammin' Shenanigans",3
+hockey,Boston,real,no,dunk,none,"Boston Puck Sluts
+Boston Ice F**kers
+Boston Nutshots
+Boston Slapshot Sinners
+Boston D*ck Dunkers",3
+lacrosse,Texas,real,no,clutch,Michael Jordan,"Texas Laxholes
+Michael Jordan's Jerk-offs
+Lacrosse Cocksmiths
+Texas Clutch Kickers
+Sackless Mavericks",3
+lacrosse,New York,real,no,dragon,Lionel Messi,"New York Lax Legends
+Dragon Dicks
+Messi's Mischief Makers
+Big Apple Ball Busters
+New York Nasty Knights",1
+hockey,none,real,yes,shadow,none,"Shadow Shredders
+Dark Ice Drifters
+Midnight Blades
+Stealthy Stickhandlers
+Phantom Pucksters",4
+baseball,Denver,fantasy,no,shadow,Sidney Crosby,"Denver Crosby's Shadows
+Crosby Crankers
+Shadowy Sidelines
+Denver Dinger Deliverers
+Crosby's Dark Knights",4
+hockey,Denver,real,no,fire,Michael Jordan,"Denver Dick Flames
+Fireball F***ers
+Mile High Muff Divers
+Avalanche of Ass
+Jordan's Jerk-offs",3
+football,Detroit,real,no,no,Tom Brady,"Detroit Brady Bunchers
+Motor City Nut Huggers
+Detroit Gridiron Gaggers
+Brady's Bawdy Blitzers
+Detroit End Zone Enforcers",2
+hockey,Texas,real,no,steel,Tiger Woods,"Texas Puck F***ers
+Tiger's Steel Slappers
+Texas Ice Tits
+Steel City Suckers
+Texas Slapshot Shaggers",1
+golf,Atlanta,real,no,shadow,Shohei Ohtani,"Atlanta Shadow Slicers
+Atlanta Ohtani's Ouchies
+Atlanta Par-Tee Animals
+Atlanta Fairway Funnies
+Atlanta Rough Riders",2
+golf,Seattle,fantasy,yes,dragon,Shohei Ohtani,"Seattle Shohei Swingers
+Dragon’s Breath Drivers
+Ohtani’s Fairway Flames
+Emerald Dragon Duffs
+Seattle Tee-rific Dragons",3
+basketball,Seattle,real,no,no,Sidney Crosby,"Seattle Sid's Slammers
+Rain City Rim Wreckers
+Emerald City Crosby Crushers
+Puget Sound Throat Slashers
+Seattle Basket Cases",2
+hockey,Atlanta,fantasy,no,fire,none,"Atlanta Fireballers
+Atlanta Puck F*ckers
+Atlanta Heat Seekers
+Atlanta Ice Holes
+Atlanta Raging Blazers",4
+football,Chicago,real,yes,storm,LeBron James,"Chicago Storm Chasers
+LeBron’s Windy City Blitz
+Chicago Tempest Tacklers
+Windy City Thunderbolts
+LeBron's Lightning Strikers",3
+soccer,Chicago,fantasy,yes,blitz,LeBron James,"Chicago LeBron Blitzers
+Chicago Jammin' Jackals
+Blitzing LeBronauts
+Chicago Goalbound Gladiators
+LeBron's Windy City Wizards",4
+soccer,Atlanta,real,yes,shadow,LeBron James,"Atlanta Shadow Strikers
+LeBron's Atlanta Specters
+Atlanta Phantom Kicks
+Shadowy Soccer Kings
+Atlanta LeBron's Lurkers",3
+wrestling,none,fantasy,yes,clutch,Michael Jordan,"Jordan's Juggernauts
+Clutch Kingdom Grapplers
+Michael's Mismatch Masters
+Air Jordan's Mat Avengers
+Sky-High Slam Artists",4
+baseball,Denver,real,yes,no,Tom Brady,"Denver Brady Bats
+Mile High Muggles
+Rocky Mountain Sluggers
+Brady's Bases Loaded
+Denver Diamond Dwellers",2
+baseball,Chicago,real,no,dunk,none,"Chicago Dunkin' Dicks
+Windy City Wankers
+Chi-Town Crotch Crushers
+Lakefront Lickin' Legends
+Midway Maulers",3
+football,Seattle,fantasy,no,no,Tiger Woods,"Seattle Woodshed Whackers
+Tiger's Turf Terrors
+Sackin' Woods Wonders
+Emerald City End Zone Euphoria
+Prowling Woods Prowlers",2
+golf,Miami,real,yes,clutch,Serena Williams,"Miami Fairway Fighters
+Clutch City Chipsters
+Serena's Swing Set
+Miami Birdie Bandits
+Teal Turf Titans",1
+volleyball,Chicago,real,no,steel,Tiger Woods,"Chicago Spiked Punchers
+Steel City Slammers
+Tiger's Ass Whackers
+Windy City Wet Slappers
+Chicago Diggin' Balls",3
+golf,none,real,no,fire,Tom Brady,"Fireball Flingers
+Brady's Birdies
+The Green Jacketed Jokers
+Tee Baggers United
+Tom's Turf Terrors",2

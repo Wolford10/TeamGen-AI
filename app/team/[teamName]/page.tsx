@@ -277,7 +277,21 @@ const TeamPage = ({ params }: TeamPageProps) => {
 
   if (loading || !mascotData) {
     return (
-      <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center justify-center py-8 px-4">
+      <div className="min-h-screen w-full flex flex-col items-center justify-center py-8 px-4 relative">
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundImage: 'url(/background.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            zIndex: 0
+          }}
+        />
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
           <span className="ml-2 text-gray-800">Loading team data...</span>
@@ -287,7 +301,21 @@ const TeamPage = ({ params }: TeamPageProps) => {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center py-8 px-4">
+    <div className="min-h-screen w-full flex flex-col items-center py-8 px-4 relative" style={{ zIndex: 10 }}>
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: 'url(/background.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1
+        }}
+      />
       {/* Mascot & Logo Images Side-by-Side */}
       <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8 w-full">
         {/* Mascot Image Card */}

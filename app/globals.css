@@ -78,11 +78,10 @@ body {
   font-size: var(--font-size-base);
   color: var(--text-default);
   margin: 0;
-  background: url('/background.webp?v=2') !important;
-  background-attachment: fixed !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background: url('/Background.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   min-height: 100vh;
 }
 
@@ -96,13 +95,12 @@ main {
 .chat-container {
   width: 100vw;
   min-height: 100vh;
-  /* background: var(--color-bg); */
-  background: transparent;
+  background: transparent !important;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   border-radius: 0;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: none !important;
 }
 
 .chat-header {
