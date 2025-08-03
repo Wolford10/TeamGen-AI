@@ -12,7 +12,7 @@ const questions = [
 ]
 
 // Function to get dynamic question text based on current answers
-const getQuestionText = (questionKey: string, currentAnswers: any) => {
+const getQuestionText = (questionKey: string, currentAnswers: { sport: string; style: string }) => {
   if (questionKey === 'location') {
     // Show "Location or Team" for fantasy football, "Location or color" for others
     if (currentAnswers.style === 'fantasy' && currentAnswers.sport?.toLowerCase() === 'football') {

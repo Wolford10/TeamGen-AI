@@ -147,9 +147,10 @@ export function getPlayerByName(teamKey: string, playerName: string): Player | n
  */
 export function generateTeamPromptContext(team: Team, style: string, cleanOrDirty: string): string {
   const playerNames = team.players.map(p => p.name).join(', ');
-  const fantasyPlayers = getFantasyPlayers(Object.keys((nflTeams as TeamData).teams).find(key => 
+  const teamKey = Object.keys((nflTeams as TeamData).teams).find(key => 
     (nflTeams as TeamData).teams[key].name === team.name
-  ) || '');
+  ) || '';
+  const fantasyPlayers = getFantasyPlayers(teamKey);
   const fantasyPlayerNames = fantasyPlayers.map(p => p.name).join(', ');
   
   return `
