@@ -152,7 +152,7 @@ function testTeamRecognition() {
 
 // Run the test if this script is executed directly
 if (require.main === module) {
-  testTeamRecognition().catch(console.error);
+  testTeamRecognition();
 }
 
 export { testTeamRecognition }; 

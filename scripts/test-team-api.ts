@@ -167,7 +167,7 @@ async function testTeamBasedAPI() {
 
 // Run the test if this script is executed directly
 if (require.main === module) {
-  testTeamBasedAPI().catch(console.error);
+  testTeamBasedAPI();
 }
 
 export { testTeamBasedAPI, testCases }; 

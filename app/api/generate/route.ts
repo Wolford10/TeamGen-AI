@@ -6,6 +6,11 @@ import {
   getTeamExamplePuns 
 } from '../../../utils/team-recognition'
 
+interface FewShotExample {
+  role: 'assistant';
+  content: string;
+}
+
 export async function POST(req: NextRequest) {
   try {
     if (!process.env.OPENAI_API_KEY) {
@@ -33,7 +38,7 @@ export async function POST(req: NextRequest) {
       isNFLTeam(location)
 
     let prompt: string
-    let fewShotExamples: any[] = []
+    let fewShotExamples: FewShotExample[] = []
 
     if (isTeamBasedFantasy) {
       // Team-based fantasy football generation
