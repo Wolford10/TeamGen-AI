@@ -87,12 +87,27 @@ export async function POST(req: NextRequest) {
       // Core user prompt with step-by-step instructions
       prompt = `
 Sport: ${sport}
+Style: ${style} ${style === 'real' ? '(REAL team names for actual sports teams)' : '(FANTASY team names for fantasy leagues)'}
 Location / primary color: ${location}
 Audience level: ${level || 'any'}
 ${playerLine}
 Extra keywords / themes: ${extra || 'none'}
 
 ${toneBlock}
+
+${style === 'real' ? `
+REAL TEAM CONTEXT:
+- Generate names for ACTUAL sports teams (youth leagues, school teams, local clubs)
+- Names should be appropriate for real team jerseys and uniforms
+- Focus on traditional team naming patterns: mascots, colors, local pride
+- Examples: "Red Dragons", "Blue Lightning", "Golden Eagles", "Silver Sharks"
+- NO fantasy football references, player puns, or fantasy terminology
+` : `
+FANTASY TEAM CONTEXT:
+- Generate names for FANTASY sports leagues (fantasy football, fantasy basketball, etc.)
+- Names can include player puns, fantasy terminology, and creative wordplay
+- Examples: "Waiver Wire Warriors", "PPR Perfectionists", "Trade Deadline Dealers"
+`}
 
 TASKS
 1. Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).
@@ -102,14 +117,17 @@ TASKS
    • Avoid tired clichés like Eagles, Tigers, Warriors, Lions
    • Names must sound plausible for a real team—no nonsense words
    • In dirty tone, keep it edgy but within the forbidden-content rules above
+   ${style === 'real' ? '• For REAL teams: Use traditional mascots, colors, local pride' : '• For FANTASY teams: Can include player puns and fantasy terminology'}
 3. Output ONLY the 5 names, one per line, no numbering, no extra text.
 
+${player && sport?.toLowerCase() === 'football' && style === 'fantasy' ? `
 If a player name is supplied, each team name MUST pun on that player's first or last name and must not duplicate classic examples (Hurts So Good, Sweet Child O' Mahomes, etc.).
+` : ''}
 `
 
-      // Few-shot pun examples (only when relevant)
+      // Few-shot examples based on style
       fewShotExamples =
-        player && sport?.toLowerCase() === 'football'
+        player && sport?.toLowerCase() === 'football' && style === 'fantasy'
           ? [
               {
                 role: 'assistant',
@@ -143,6 +161,17 @@ If a player name is supplied, each team name MUST pun on that player's first or 
                 content: `Example fantasy football league dynamic names:\nCommissioner's Nightmare\nTrade Block Heroes\nWaiver Wire Warriors\nBye Week Hell\nLeague Taco's Revenge`,
               },
             ]
+          : style === 'real'
+          ? [
+              {
+                role: 'assistant',
+                content: `Example real team names:\nRed Dragons\nBlue Lightning\nGolden Eagles\nSilver Sharks\nGreen Hornets`,
+              },
+              {
+                role: 'assistant',
+                content: `Example real team names with colors:\nCrimson Crushers\nAzure Aces\nGolden Griffins\nSilver Stallions\nEmerald Eagles`,
+              },
+            ]
           : []
     }
 
@@ -161,7 +190,9 @@ If a player name is supplied, each team name MUST pun on that player's first or 
             role: 'system',
             content: isTeamBasedFantasy
               ? 'You are a world-class fantasy football team name generator specializing in player puns and team culture. Generate names based on the specific team and players provided. Deliver only the final team names—no explanations, no numbering.'
-              : 'You are a world-class brand-naming expert and comedy writer. Deliver only the final team names—no explanations, no numbering.',
+              : style === 'real'
+              ? 'You are a world-class sports team name generator for REAL teams (youth leagues, schools, local clubs). Generate traditional team names with mascots and colors. NO fantasy references or player puns. Deliver only the final team names—no explanations, no numbering.'
+              : 'You are a world-class fantasy sports team name generator. Generate creative fantasy team names with wordplay and fantasy terminology. Deliver only the final team names—no explanations, no numbering.',
           },
           ...fewShotExamples,
           {
