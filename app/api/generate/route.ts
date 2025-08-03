@@ -99,9 +99,9 @@ ${style === 'real' ? `
 REAL TEAM CONTEXT:
 - Generate names for ACTUAL sports teams (youth leagues, school teams, local clubs)
 - Names should be appropriate for real team jerseys and uniforms
-- Use BALANCED VARIETY: 1-3 alliterative names mixed with other patterns
+- Use BALANCED VARIETY: ONLY 1-2 alliterative names maximum
 - Examples: "Thunderstrike", "Blue Lightning", "Fire & Ice", "Storm Force", "Golden Eagles"
-- Mix patterns: alliterative, rhyming pairs, compound words, descriptive phrases
+- Prioritize: compound words, rhyming pairs, descriptive phrases over alliteration
 - NO fantasy football references, player puns, or fantasy terminology
 ` : `
 FANTASY TEAM CONTEXT:
@@ -113,8 +113,8 @@ FANTASY TEAM CONTEXT:
 TASKS
 1. Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).
 2. Using those ideas, craft EXACTLY 5 unique team names with BALANCED VARIETY.
-   • Include 1-3 alliterative names (like "Blue Lightning", "Red Dragons")
-   • Mix with other patterns: rhyming pairs, compound words, descriptive phrases
+   • Include ONLY 1-2 alliterative names maximum (like "Blue Lightning", "Red Dragons")
+   • Prioritize other patterns: compound words ("Thunderstrike"), rhyming pairs ("Fire & Ice"), descriptive phrases ("Storm Force")
    • Vary name length: some short (1-2 words), some longer (3-4 words)
    • Avoid tired clichés like Eagles, Tigers, Warriors, Lions
    • Names must sound plausible for a real team—no nonsense words
@@ -171,7 +171,7 @@ If a player name is supplied, each team name MUST pun on that player's first or 
               },
               {
                 role: 'assistant',
-                content: `Example real team names mixed patterns:\nRed Dragons\nThunderstrike\nFire & Ice\nBlue Lightning\nStorm Force`,
+                content: `Example real team names mixed patterns:\nThunderstrike\nFire & Ice\nBlue Lightning\nStorm Force\nGolden Eagles`,
               },
             ]
           : []
@@ -193,7 +193,7 @@ If a player name is supplied, each team name MUST pun on that player's first or 
             content: isTeamBasedFantasy
               ? 'You are a world-class fantasy football team name generator specializing in player puns and team culture. Generate names based on the specific team and players provided. Deliver only the final team names—no explanations, no numbering.'
               : style === 'real'
-              ? 'You are a world-class sports team name generator for REAL teams (youth leagues, schools, local clubs). Generate traditional team names with mascots and colors. NO fantasy references or player puns. Deliver only the final team names—no explanations, no numbering.'
+              ? 'You are a world-class sports team name generator for REAL teams (youth leagues, schools, local clubs). Generate traditional team names with mascots and colors. Use ONLY 1-2 alliterations maximum. Prioritize compound words, rhyming pairs, and descriptive phrases. NO fantasy references or player puns. Deliver only the final team names—no explanations, no numbering.'
               : 'You are a world-class fantasy sports team name generator. Generate creative fantasy team names with wordplay and fantasy terminology. Deliver only the final team names—no explanations, no numbering.',
           },
           ...fewShotExamples,
