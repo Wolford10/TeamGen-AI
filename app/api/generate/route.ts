@@ -86,14 +86,29 @@ export async function POST(req: NextRequest) {
 
       // Core user prompt with step-by-step instructions
       prompt = `
+PRIMARY FOCUS - KEYWORDS: ${extra || 'none'}
 Sport: ${sport}
 Style: ${style} ${style === 'real' ? '(REAL team names for actual sports teams)' : '(FANTASY team names for fantasy leagues)'}
 Location / primary color: ${location}
 Audience level: ${level || 'any'}
 ${playerLine}
-Extra keywords / themes: ${extra || 'none'}
 
 ${toneBlock}
+
+KEYWORD INTEGRATION RULES:
+${extra && extra.toLowerCase() !== 'none' && extra.toLowerCase() !== 'no' && extra.toLowerCase() !== 'yes' ? `
+• The keyword "${extra}" is MANDATORY - every team name MUST incorporate or reference it
+• Integration techniques:
+  - Direct inclusion: "The ${extra}", "${extra} United", "${extra} Elite"
+  - Wordplay: "${extra} is Life", "${extra} Mode", "${extra} Nation"
+  - Related concepts: if "${extra}" is "ballers" → "Court Kings", "Game Changers", "Ball Handlers"
+  - Synonyms: if "${extra}" is "crushers" → "Destroyers", "Demolishers", "Wrecking Crew"
+• Sport and location are SECONDARY to keyword integration
+• Examples for "${extra}": "The ${extra}", "${extra} United", "${extra} Elite", "${extra} Nation", "${extra} Warriors"
+` : `
+• No specific keywords provided - focus on sport and location themes
+• Generate names based on sport context and location/color
+`}
 
 ${style === 'real' ? `
 REAL TEAM CONTEXT:
@@ -111,8 +126,9 @@ FANTASY TEAM CONTEXT:
 `}
 
 TASKS
-1. Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).
+1. ${extra && extra.toLowerCase() !== 'none' && extra.toLowerCase() !== 'no' && extra.toLowerCase() !== 'yes' ? `Brainstorm 3–5 ways to incorporate "${extra}" into team names (do NOT output them).` : `Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).`}
 2. Using those ideas, craft EXACTLY 5 unique team names with BALANCED VARIETY.
+   ${extra && extra.toLowerCase() !== 'none' && extra.toLowerCase() !== 'no' && extra.toLowerCase() !== 'yes' ? `• EVERY name MUST incorporate or reference "${extra}"` : ''}
    • Include ONLY 1-2 alliterative names maximum (like "Blue Lightning", "Red Dragons")
    • Prioritize other patterns: compound words ("Thunderstrike"), rhyming pairs ("Fire & Ice"), descriptive phrases ("Storm Force")
    • Vary name length: some short (1-2 words), some longer (3-4 words)
@@ -173,6 +189,12 @@ If a player name is supplied, each team name MUST pun on that player's first or 
                 role: 'assistant',
                 content: `Example real team names mixed patterns:\nThunderstrike\nFire & Ice\nBlue Lightning\nStorm Force\nGolden Eagles`,
               },
+              ...(extra && extra.toLowerCase() !== 'none' && extra.toLowerCase() !== 'no' && extra.toLowerCase() !== 'yes' ? [
+                {
+                  role: 'assistant' as const,
+                  content: `Example team names incorporating "${extra}":\nThe ${extra}\n${extra} United\n${extra} Elite\n${extra} Nation\n${extra} Warriors`,
+                }
+              ] : []),
             ]
           : []
     }
@@ -190,11 +212,19 @@ If a player name is supplied, each team name MUST pun on that player's first or 
         messages: [
           {
             role: 'system',
-            content: isTeamBasedFantasy
-              ? 'You are a world-class fantasy football team name generator specializing in player puns and team culture. Generate names based on the specific team and players provided. Deliver only the final team names—no explanations, no numbering.'
-              : style === 'real'
-              ? 'You are a world-class sports team name generator for REAL teams (youth leagues, schools, local clubs). Generate traditional team names with mascots and colors. Use ONLY 1-2 alliterations maximum. Prioritize compound words, rhyming pairs, and descriptive phrases. NO fantasy references or player puns. Deliver only the final team names—no explanations, no numbering.'
-              : 'You are a world-class fantasy sports team name generator. Generate creative fantasy team names with wordplay and fantasy terminology. Deliver only the final team names—no explanations, no numbering.',
+            content: (() => {
+              const keywordInstruction = extra && extra.toLowerCase() !== 'none' && extra.toLowerCase() !== 'no' && extra.toLowerCase() !== 'yes' 
+                ? 'When keywords are provided, they are MANDATORY - every team name MUST incorporate or reference the keyword. ' 
+                : '';
+              
+              if (isTeamBasedFantasy) {
+                return 'You are a world-class fantasy football team name generator specializing in player puns and team culture. Generate names based on the specific team and players provided. Deliver only the final team names—no explanations, no numbering.';
+              } else if (style === 'real') {
+                return `You are a world-class sports team name generator for REAL teams (youth leagues, schools, local clubs). ${keywordInstruction}Generate traditional team names with mascots and colors. Use ONLY 1-2 alliterations maximum. Prioritize compound words, rhyming pairs, and descriptive phrases. NO fantasy references or player puns. Deliver only the final team names—no explanations, no numbering.`;
+              } else {
+                return `You are a world-class fantasy sports team name generator. ${keywordInstruction}Generate creative fantasy team names with wordplay and fantasy terminology. Deliver only the final team names—no explanations, no numbering.`;
+              }
+            })(),
           },
           ...fewShotExamples,
           {

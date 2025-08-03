@@ -7,7 +7,7 @@ const questions = [
   { key: 'style', question: 'What style?' },
   { key: 'location', question: 'Location or color? (e.g. Boston, blue)' },
   { key: 'cleanOrDirty', question: 'Appropriate?' },
-  { key: 'extra', question: 'Is there anything else you want to be included? Any keywords you want?' },
+  { key: 'extra', question: 'Is there anything else you want to be included? Any keywords or tones you want?' },
   { key: 'player', question: 'Player name? (optional - for fantasy puns)' },
 ]
 
@@ -19,6 +19,14 @@ const getQuestionText = (questionKey: string, currentAnswers: { sport: string; s
       return 'Location or Team? (e.g. Bengals, Chiefs, Boston)'
     }
     return 'Location or color? (e.g. Boston, blue)'
+  }
+  if (questionKey === 'extra') {
+    return `Is there anything else you want to be included? Any keywords or tones you want?
+
+Examples:
+• Keywords: "ballers", "crushers", "emma", "thunder", "fire"
+• Tones: "funny", "aggressive", "elegant", "fierce"
+• Leave blank if none`
   }
   return questions.find(q => q.key === questionKey)?.question || ''
 }
@@ -266,7 +274,7 @@ export default function PromptForm() {
             (answers.style === 'fantasy' && answers.sport?.toLowerCase() === 'football' ? 
               'Bengals, Chiefs, Boston, etc.' : 
               'Boston, Blue, etc.') : 
-          key === 'extra' ? 'Any keywords or themes' : 
+          key === 'extra' ? 'ballers, crushers, funny, aggressive, etc.' : 
           key === 'player' ? 'Player name for fantasy puns' : ''
         }
         autoFocus
@@ -320,17 +328,40 @@ export default function PromptForm() {
       </div>
       
       <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
+        {/* Progress indicator with navigation */}
+        {currentStep > 0 && (
+          <div className="flex justify-center mb-6">
+            <div className="flex gap-2 items-center">
+              {filteredQuestions.slice(0, currentStep).map((question, idx) => (
+                <button
+                  key={question.key}
+                  onClick={() => {
+                    setCurrentStep(idx)
+                    setInput(answers[question.key] || '')
+                  }}
+                  className={`w-3 h-3 rounded-full transition ${
+                    idx === currentStep - 1 
+                      ? 'bg-purple-500 ring-2 ring-purple-200' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  title={`Go back to: ${getQuestionText(question.key, answers)}`}
+                />
+              ))}
+              {/* Current question indicator */}
+              {currentStep < filteredQuestions.length && (
+                <div className="w-3 h-3 rounded-full bg-purple-300 border-2 border-purple-500 animate-pulse" />
+              )}
+            </div>
+          </div>
+        )}
+        
         {/* Render each message (question or answer) as its own row */}
         {messages.map((msg, idx) => {
-          if (
-            msg.type === 'answer' &&
-            currentStep === filteredQuestions.length &&
-            teamNames.length > 0 &&
-            !isTyping
-          ) {
+          if (msg.type === 'answer') {
             // Find the question key
             const qIdx = filteredQuestions.findIndex(q => q.key + '-a' === msg.key)
             const qKey = filteredQuestions[qIdx]?.key
+            
             return (
               <div key={msg.key} className="flex w-full justify-end items-center gap-2 mb-4">
                 {editingKey === qKey ? (
@@ -362,18 +393,14 @@ export default function PromptForm() {
               </div>
             )
           }
-          // Default rendering for other messages
+          // Default rendering for questions
           return (
             <div
               key={msg.key}
-              className={`flex w-full mb-4 ${msg.type === 'question' ? 'justify-start' : 'justify-end'}`}
+              className="flex w-full justify-start mb-4"
             >
               <div
-                className={`rounded-lg px-4 py-3 text-base max-w-[70%] md:max-w-[40%] ${
-                  msg.type === 'question'
-                    ? 'bg-white text-gray-800 font-semibold shadow-sm border border-gray-200'
-                    : 'bg-white text-gray-800 font-medium shadow-sm border border-gray-200'
-                }`}
+                className="rounded-lg px-4 py-3 text-base max-w-[70%] md:max-w-[40%] bg-white text-gray-800 font-semibold shadow-sm border border-gray-200"
               >
                 {msg.text}
               </div>
@@ -454,16 +481,31 @@ export default function PromptForm() {
       {/* Input form at bottom center */}
       {!isTyping && currentStep < filteredQuestions.length && (
         <div className="w-full flex justify-center mt-8">
-          <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full max-w-lg">
-            <div className="flex-1">{renderInput()}</div>
-            <button
-              type="submit"
-              className="px-6 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
-              disabled={!input}
-            >
-              →
-            </button>
-          </form>
+          <div className="flex flex-col gap-3 w-full max-w-lg">
+            <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full">
+              <div className="flex-1">{renderInput()}</div>
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-lg bg-purple-500 text-white font-semibold transition disabled:opacity-50 transform hover:scale-105 hover:bg-purple-600 active:scale-95 duration-200 ease-in-out shadow-sm"
+                disabled={!input}
+              >
+                →
+              </button>
+            </form>
+            {/* Back button */}
+            {currentStep > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentStep(currentStep - 1)
+                  setInput(answers[filteredQuestions[currentStep - 1].key] || '')
+                }}
+                className="self-center px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition"
+              >
+                ← Back to previous question
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>
