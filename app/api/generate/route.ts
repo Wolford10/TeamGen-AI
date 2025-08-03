@@ -99,8 +99,9 @@ ${style === 'real' ? `
 REAL TEAM CONTEXT:
 - Generate names for ACTUAL sports teams (youth leagues, school teams, local clubs)
 - Names should be appropriate for real team jerseys and uniforms
-- Focus on traditional team naming patterns: mascots, colors, local pride
-- Examples: "Red Dragons", "Blue Lightning", "Golden Eagles", "Silver Sharks"
+- Use VARIETY in naming patterns: mascots, colors, local pride, descriptive phrases
+- Examples: "Thunderstrike", "Blue Lightning", "Fire & Ice", "Storm Force", "Golden Eagles"
+- Mix different styles: some alliterative, some descriptive, some compound words
 - NO fantasy football references, player puns, or fantasy terminology
 ` : `
 FANTASY TEAM CONTEXT:
@@ -111,9 +112,10 @@ FANTASY TEAM CONTEXT:
 
 TASKS
 1. Brainstorm 3–5 vivid themes, puns, or local references related to the sport and location (do NOT output them).
-2. Using those ideas, craft EXACTLY 5 unique team names.
-   • Max 3 words each
-   • At least 2 names must feature alliteration or rhyme
+2. Using those ideas, craft EXACTLY 5 unique team names with VARIETY.
+   • Mix different naming patterns: some alliterative, some rhyming, some descriptive
+   • Vary name length: some short (1-2 words), some longer (3-4 words)
+   • Consider alliteration when it works naturally, but don't force it
    • Avoid tired clichés like Eagles, Tigers, Warriors, Lions
    • Names must sound plausible for a real team—no nonsense words
    • In dirty tone, keep it edgy but within the forbidden-content rules above
@@ -165,11 +167,11 @@ If a player name is supplied, each team name MUST pun on that player's first or 
           ? [
               {
                 role: 'assistant',
-                content: `Example real team names:\nRed Dragons\nBlue Lightning\nGolden Eagles\nSilver Sharks\nGreen Hornets`,
+                content: `Example real team names with variety:\nThunderstrike\nBlue Lightning\nGolden Eagles\nStorm Force\nRed Dragons`,
               },
               {
                 role: 'assistant',
-                content: `Example real team names with colors:\nCrimson Crushers\nAzure Aces\nGolden Griffins\nSilver Stallions\nEmerald Eagles`,
+                content: `Example real team names mixed patterns:\nFire & Ice\nThunderstrike\nBlue Lightning\nStorm Force\nGolden Eagles`,
               },
             ]
           : []
