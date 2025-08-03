@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 const questions = [
@@ -121,6 +121,9 @@ export default function PromptForm() {
   const [paidGenDate, setPaidGenDate] = useState('')
   const [paidCapReached, setPaidCapReached] = useState(false)
 
+  // Ref for auto-scrolling to bottom
+  const bottomRef = useRef<HTMLDivElement>(null)
+
   // On mount, read localStorage values
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -149,6 +152,27 @@ export default function PromptForm() {
       }
     }
   }, [])
+
+  // Auto-scroll to bottom when conversation updates
+  useEffect(() => {
+    const scrollToBottom = () => {
+      if (bottomRef.current) {
+        bottomRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'end' 
+        })
+      }
+    }
+
+    // Immediate scroll for most updates
+    scrollToBottom()
+    
+    // Additional scroll after typing animation for better UX
+    if (isTyping) {
+      const timer = setTimeout(scrollToBottom, 500)
+      return () => clearTimeout(timer)
+    }
+  }, [currentStep, isTyping, teamNames.length, editingKey])
 
   // Helper to check if generation is allowed
   const canGenerate = userHasPaid || genCount < 5
@@ -312,11 +336,14 @@ export default function PromptForm() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center py-8 px-4">
+    <div className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center py-8 px-4 relative" style={{ backgroundImage: 'url(/background.png)' }}>
+      {/* Subtle overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-white bg-opacity-30 pointer-events-none"></div>
+      
       <PaywallModal show={showPaywall && genBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
       
       {/* Logo and Title */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 relative z-10">
         <div className="flex justify-center mb-4">
           <div className="w-8 h-8 flex items-center justify-center">
             <div className="w-2 h-2 bg-gray-800 rounded-full mx-1"></div>
@@ -327,7 +354,7 @@ export default function PromptForm() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">Team Name Generator</h1>
       </div>
       
-      <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
+      <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col relative z-10">
         {/* Progress indicator with navigation */}
         {currentStep > 0 && (
           <div className="flex justify-center mb-6">
@@ -480,7 +507,7 @@ export default function PromptForm() {
       
       {/* Input form at bottom center */}
       {!isTyping && currentStep < filteredQuestions.length && (
-        <div className="w-full flex justify-center mt-8">
+        <div className="w-full flex justify-center mt-8 relative z-10">
           <div className="flex flex-col gap-3 w-full max-w-lg">
             <form onSubmit={handleNext} className="flex flex-row gap-3 items-center w-full">
               <div className="flex-1">{renderInput()}</div>
@@ -508,6 +535,9 @@ export default function PromptForm() {
           </div>
         </div>
       )}
+      
+      {/* Auto-scroll target */}
+      <div ref={bottomRef} />
     </div>
   )
 }
