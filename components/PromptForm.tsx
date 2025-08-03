@@ -24,7 +24,7 @@ const getQuestionText = (questionKey: string, currentAnswers: { sport: string; s
     return `Is there anything else you want to be included? Any keywords or tones you want?
 
 Examples:
-• Keywords: "ballers", "crushers", "emma", "thunder", "fire"
+• Keywords: "ballers", "crushers", "thunder", "fire"
 • Tones: "funny", "aggressive", "elegant", "fierce"
 • Leave blank if none`
   }
@@ -336,9 +336,7 @@ export default function PromptForm() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center py-8 px-4 relative" style={{ backgroundImage: 'url(/background.png)' }}>
-      {/* Subtle overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-white bg-opacity-30 pointer-events-none"></div>
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-white flex flex-col items-center py-8 px-4">
       
       <PaywallModal show={showPaywall && genBlocked && !userHasPaid} onClose={() => setShowPaywall(false)} />
       

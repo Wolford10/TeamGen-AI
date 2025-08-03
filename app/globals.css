@@ -78,11 +78,15 @@ body {
   font-size: var(--font-size-base);
   color: var(--text-default);
   margin: 0;
-  background: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 50%, #ffffff 100%);
-  background-attachment: fixed;
-  background-size: cover;
+  background: url('/background.webp?v=2') !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   min-height: 100vh;
 }
+
+
 
 main {
   background: transparent !important;
