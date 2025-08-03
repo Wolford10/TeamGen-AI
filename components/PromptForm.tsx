@@ -11,6 +11,18 @@ const questions = [
   { key: 'player', question: 'Player name? (optional - for fantasy puns)' },
 ]
 
+// Function to get dynamic question text based on current answers
+const getQuestionText = (questionKey: string, currentAnswers: any) => {
+  if (questionKey === 'location') {
+    // Show "Location or Team" for fantasy football, "Location or color" for others
+    if (currentAnswers.style === 'fantasy' && currentAnswers.sport?.toLowerCase() === 'football') {
+      return 'Location or Team? (e.g. Bengals, Chiefs, Boston)'
+    }
+    return 'Location or color? (e.g. Boston, blue)'
+  }
+  return questions.find(q => q.key === questionKey)?.question || ''
+}
+
 // PaywallModal component
 function PaywallModal({ show, onClose }: { show: boolean, onClose: () => void }) {
   const [loading, setLoading] = useState(false);
@@ -248,7 +260,15 @@ export default function PromptForm() {
         className={inputClass}
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder={key === 'sport' ? 'Football, Soccer, Basketball, ETC' : key === 'location' ? 'Boston, Blue, etc.' : key === 'extra' ? 'Any keywords or themes' : key === 'player' ? 'Player name for fantasy puns' : ''}
+        placeholder={
+          key === 'sport' ? 'Football, Soccer, Basketball, ETC' : 
+          key === 'location' ? 
+            (answers.style === 'fantasy' && answers.sport?.toLowerCase() === 'football' ? 
+              'Bengals, Chiefs, Boston, etc.' : 
+              'Boston, Blue, etc.') : 
+          key === 'extra' ? 'Any keywords or themes' : 
+          key === 'player' ? 'Player name for fantasy puns' : ''
+        }
         autoFocus
       />
     )
@@ -268,7 +288,7 @@ export default function PromptForm() {
   for (let i = 0; i < currentStep; i++) {
     const question = filteredQuestions[i]
     if (question) {
-      messages.push({ type: 'question', text: question.question, key: question.key + '-q' })
+      messages.push({ type: 'question', text: getQuestionText(question.key, answers), key: question.key + '-q' })
       if (answers[question.key]) {
         messages.push({ type: 'answer', text: answers[question.key], key: question.key + '-a' })
       }
@@ -278,7 +298,7 @@ export default function PromptForm() {
   if (isTyping && currentStep < filteredQuestions.length && pendingAnswer) {
     const currentQuestion = filteredQuestions[currentStep]
     if (currentQuestion) {
-      messages.push({ type: 'question', text: currentQuestion.question, key: currentQuestion.key + '-q-current' })
+      messages.push({ type: 'question', text: getQuestionText(currentQuestion.key, answers), key: currentQuestion.key + '-q-current' })
       messages.push({ type: 'answer', text: pendingAnswer, key: currentQuestion.key + '-a-current' })
     }
   }
@@ -364,7 +384,7 @@ export default function PromptForm() {
         {currentStep < filteredQuestions.length && !isTyping && (
           <div className="flex w-full justify-start mb-4">
             <div className="rounded-lg px-4 py-3 bg-white text-gray-800 font-semibold text-base max-w-[70%] md:max-w-[40%] shadow-sm border border-gray-200">
-              {filteredQuestions[currentStep].question}
+              {getQuestionText(filteredQuestions[currentStep].key, answers)}
             </div>
           </div>
         )}

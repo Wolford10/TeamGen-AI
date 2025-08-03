@@ -1,0 +1,371 @@
+{
+  "teams": {
+    "bengals": {
+      "name": "Cincinnati Bengals",
+      "city": "Cincinnati",
+      "nickname": "Who Dey",
+      "stadium": "Paycor Stadium",
+      "players": [
+        {
+          "name": "Joe Burrow",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["burrow", "borrowed", "burrowing"],
+          "fantasy_context": "QB1, dynasty cornerstone"
+        },
+        {
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["chase", "chasing", "chased"],
+          "fantasy_context": "WR1, elite receiver"
+        },
+        {
+          "name": "Tee Higgins",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["tee", "teeing", "golf"],
+          "fantasy_context": "WR2, consistent producer"
+        },
+        {
+          "name": "Joe Mixon",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["mix", "mixing", "mixture"],
+          "fantasy_context": "RB2, volume back"
+        },
+        {
+          "name": "Trenton Irwin",
+          "position": "WR",
+          "fantasy_value": "low",
+          "pun_opportunities": ["trenton", "irwin"],
+          "fantasy_context": "depth receiver"
+        }
+      ]
+    },
+    "chiefs": {
+      "name": "Kansas City Chiefs",
+      "city": "Kansas City",
+      "nickname": "Chiefs Kingdom",
+      "stadium": "Arrowhead Stadium",
+      "players": [
+        {
+          "name": "Patrick Mahomes",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["mahomes", "home", "homes"],
+          "fantasy_context": "QB1, elite quarterback"
+        },
+        {
+          "name": "Travis Kelce",
+          "position": "TE",
+          "fantasy_value": "high",
+          "pun_opportunities": ["kelce", "kel"],
+          "fantasy_context": "TE1, elite tight end"
+        },
+        {
+          "name": "Isiah Pacheco",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["pacheco", "pache"],
+          "fantasy_context": "RB2, emerging back"
+        },
+        {
+          "name": "Rashee Rice",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["rice", "riced"],
+          "fantasy_context": "WR2, breakout candidate"
+        }
+      ]
+    },
+    "eagles": {
+      "name": "Philadelphia Eagles",
+      "city": "Philadelphia",
+      "nickname": "Philly",
+      "stadium": "Lincoln Financial Field",
+      "players": [
+        {
+          "name": "Jalen Hurts",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["hurts", "hurt", "hurting"],
+          "fantasy_context": "QB1, dual-threat quarterback"
+        },
+        {
+          "name": "A.J. Brown",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["brown", "browned"],
+          "fantasy_context": "WR1, elite receiver"
+        },
+        {
+          "name": "DeVonta Smith",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["smith", "smithed"],
+          "fantasy_context": "WR2, consistent producer"
+        },
+        {
+          "name": "D'Andre Swift",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["swift", "swiftly"],
+          "fantasy_context": "RB2, versatile back"
+        }
+      ]
+    },
+    "cowboys": {
+      "name": "Dallas Cowboys",
+      "city": "Dallas",
+      "nickname": "America's Team",
+      "stadium": "AT&T Stadium",
+      "players": [
+        {
+          "name": "Dak Prescott",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["dak", "prescott"],
+          "fantasy_context": "QB1, consistent producer"
+        },
+        {
+          "name": "CeeDee Lamb",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["lamb", "lambs"],
+          "fantasy_context": "WR1, elite receiver"
+        },
+        {
+          "name": "Tony Pollard",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["pollard", "poll"],
+          "fantasy_context": "RB2, emerging back"
+        },
+        {
+          "name": "Jake Ferguson",
+          "position": "TE",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["ferguson", "ferg"],
+          "fantasy_context": "TE2, breakout candidate"
+        }
+      ]
+    },
+    "bills": {
+      "name": "Buffalo Bills",
+      "city": "Buffalo",
+      "nickname": "Bills Mafia",
+      "stadium": "Highmark Stadium",
+      "players": [
+        {
+          "name": "Josh Allen",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["allen", "all"],
+          "fantasy_context": "QB1, dual-threat quarterback"
+        },
+        {
+          "name": "Stefon Diggs",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["diggs", "dig"],
+          "fantasy_context": "WR1, elite receiver"
+        },
+        {
+          "name": "James Cook",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["cook", "cooking"],
+          "fantasy_context": "RB2, versatile back"
+        },
+        {
+          "name": "Dalton Kincaid",
+          "position": "TE",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["kincaid", "kin"],
+          "fantasy_context": "TE2, rookie breakout"
+        }
+      ]
+    },
+    "49ers": {
+      "name": "San Francisco 49ers",
+      "city": "San Francisco",
+      "nickname": "Faithful",
+      "stadium": "Levi's Stadium",
+      "players": [
+        {
+          "name": "Brock Purdy",
+          "position": "QB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["purdy", "purdy"],
+          "fantasy_context": "QB2, efficient quarterback"
+        },
+        {
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["mccaffrey", "cmc"],
+          "fantasy_context": "RB1, elite running back"
+        },
+        {
+          "name": "Deebo Samuel",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["deebo", "samuel"],
+          "fantasy_context": "WR2, versatile weapon"
+        },
+        {
+          "name": "George Kittle",
+          "position": "TE",
+          "fantasy_value": "high",
+          "pun_opportunities": ["kittle", "kit"],
+          "fantasy_context": "TE1, elite tight end"
+        }
+      ]
+    },
+    "ravens": {
+      "name": "Baltimore Ravens",
+      "city": "Baltimore",
+      "nickname": "Ravens Flock",
+      "stadium": "M&T Bank Stadium",
+      "players": [
+        {
+          "name": "Lamar Jackson",
+          "position": "QB",
+          "fantasy_value": "high",
+          "pun_opportunities": ["jackson", "jack"],
+          "fantasy_context": "QB1, dual-threat quarterback"
+        },
+        {
+          "name": "Mark Andrews",
+          "position": "TE",
+          "fantasy_value": "high",
+          "pun_opportunities": ["andrews", "andrew"],
+          "fantasy_context": "TE1, elite tight end"
+        },
+        {
+          "name": "Zay Flowers",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["flowers", "flower"],
+          "fantasy_context": "WR2, rookie breakout"
+        },
+        {
+          "name": "Gus Edwards",
+          "position": "RB",
+          "fantasy_value": "low",
+          "pun_opportunities": ["gus", "edwards"],
+          "fantasy_context": "RB3, touchdown dependent"
+        }
+      ]
+    },
+    "dolphins": {
+      "name": "Miami Dolphins",
+      "city": "Miami",
+      "nickname": "Fins",
+      "stadium": "Hard Rock Stadium",
+      "players": [
+        {
+          "name": "Tua Tagovailoa",
+          "position": "QB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["tua", "tagovailoa"],
+          "fantasy_context": "QB2, efficient quarterback"
+        },
+        {
+          "name": "Tyreek Hill",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["hill", "hills"],
+          "fantasy_context": "WR1, elite speed receiver"
+        },
+        {
+          "name": "Jaylen Waddle",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["waddle", "waddling"],
+          "fantasy_context": "WR2, speed receiver"
+        },
+        {
+          "name": "Raheem Mostert",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["mostert", "most"],
+          "fantasy_context": "RB2, speed back"
+        }
+      ]
+    },
+    "lions": {
+      "name": "Detroit Lions",
+      "city": "Detroit",
+      "nickname": "Pride",
+      "stadium": "Ford Field",
+      "players": [
+        {
+          "name": "Jared Goff",
+          "position": "QB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["goff", "go"],
+          "fantasy_context": "QB2, efficient quarterback"
+        },
+        {
+          "name": "Amon-Ra St. Brown",
+          "position": "WR",
+          "fantasy_value": "high",
+          "pun_opportunities": ["amon-ra", "st. brown", "brown"],
+          "fantasy_context": "WR1, elite receiver"
+        },
+        {
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["gibbs", "gib"],
+          "fantasy_context": "RB2, rookie breakout"
+        },
+        {
+          "name": "Sam LaPorta",
+          "position": "TE",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["laporta", "porta"],
+          "fantasy_context": "TE2, rookie breakout"
+        }
+      ]
+    },
+    "packers": {
+      "name": "Green Bay Packers",
+      "city": "Green Bay",
+      "nickname": "Cheeseheads",
+      "stadium": "Lambeau Field",
+      "players": [
+        {
+          "name": "Jordan Love",
+          "position": "QB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["love", "loving"],
+          "fantasy_context": "QB2, emerging quarterback"
+        },
+        {
+          "name": "Christian Watson",
+          "position": "WR",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["watson", "wat"],
+          "fantasy_context": "WR2, breakout candidate"
+        },
+        {
+          "name": "Aaron Jones",
+          "position": "RB",
+          "fantasy_value": "medium",
+          "pun_opportunities": ["jones", "jonesing"],
+          "fantasy_context": "RB2, versatile back"
+        },
+        {
+          "name": "Luke Musgrave",
+          "position": "TE",
+          "fantasy_value": "low",
+          "pun_opportunities": ["musgrave", "grave"],
+          "fantasy_context": "TE3, rookie tight end"
+        }
+      ]
+    }
+  }
+} 
